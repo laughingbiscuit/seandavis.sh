@@ -1,3 +1,4 @@
+<div id="discuss">
 <script src="https://giscus.app/client.js"
         data-repo="laughingbiscuit/seandavis.sh"
         data-repo-id="R_kgDOKRhG6Q"
@@ -13,3 +14,4 @@
         crossorigin="anonymous"
         async>
 </script>
+</div>
