@@ -85,6 +85,11 @@ function demo_plantuml_flow {
 
 @startuml
 :step one;
+if (condition?) then (result1)
+  :something;
+else (result2)
+  :something else;
+endif
 :step two;
 @enduml
 
