@@ -48,7 +48,7 @@ function install_dev_env_desktop {
 ###
 
 function demo_plantuml_seq {
-  cat << EOF | java -jar /opt/plantuml.jar -p -ttxt
+  cat << EOF | java -jar /opt/plantuml.jar -p > demo_plantuml_seq.png
 
 
 @startuml
@@ -59,7 +59,7 @@ a->b: GET /
 EOF
 }
 
-# <img src="demo_plantuml_component.png">
+# <img src="demo_plantuml_seq.png">
 
 function demo_plantuml_component {
   cat << EOF | java -jar /opt/plantuml.jar -p > demo_plantuml_component.png
@@ -77,7 +77,7 @@ cloud GCP {
 EOF
 }
 
-# <img src="demo_plantuml_flow.png">
+# <img src="demo_plantuml_component.png">
 
 function demo_plantuml_flow {
   cat << EOF | java -jar /opt/plantuml.jar -p > demo_plantuml_flow.png
@@ -91,6 +91,7 @@ function demo_plantuml_flow {
 
 EOF
 }
+# <img src="demo_plantuml_flow.png">
 
 # fin
 "$@"
