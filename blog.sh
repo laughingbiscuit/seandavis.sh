@@ -44,7 +44,7 @@ function install_dev_env_desktop {
 # 3.1. Dev Env Demo - PlantUML
 ###
 function demo_plantuml_seq {
-  cat << EOF | java -jar /opt/plantuml.jar -ttxt
+  cat << EOF | java -jar /opt/plantuml.jar -p -ttxt
 @startuml
 a->b: GET /
 @enduml
@@ -52,7 +52,7 @@ EOF
 }
 # <img src="demo_plantuml_component.png">
 function demo_plantuml_component {
-  cat << EOF | java -jar /opt/plantuml.jar > demo_plantuml_component.png
+  cat << EOF | java -jar /opt/plantuml.jar -p > demo_plantuml_component.png
 @startuml
 cloud GCP {
   rectangle uSvc as ms
@@ -64,7 +64,7 @@ EOF
 }
 # <img src="demo_plantuml_flow.png">
 function demo_plantuml_flow {
-  cat << EOF | java -jar /opt/plantuml.jar > demo_plantuml_flow.png
+  cat << EOF | java -jar /opt/plantuml.jar -p > demo_plantuml_flow.png
 @startuml
 :step one;
 :step two;

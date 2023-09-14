@@ -8,5 +8,5 @@ cp static/* target/
 cp blog.sh target/
 cd target/
 
-cat blog.sh | grep -e "^function" | xargs -I{} | sed 's/function //' | sed 's/{//' | xargs -I{} sh -c "sh blog.sh {}"
+cat blog.sh | grep -e "^function" | sed 's/function //' | sed 's/{//' | xargs -I{}  sh -c "sh blog.sh {}"
 echo -e "\`\`\`\n\$SCRIPT\n\`\`\`" | pandoc -A after.htmlsnip --metadata="title=seandavis.sh" -s | SCRIPT="$(cat blog.sh)" envsubst > index.html
