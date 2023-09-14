@@ -25,22 +25,35 @@
 # 2 Dev Environment Setup
 ###
 
-# Since Alpine Linux 3.16, DNS over TCP issues have been resolved. Its
-# time to give it another try!
+# Since Alpine Linux 3.18, it's main issue has been solved.
+# <a href="https://www.theregister.com/2023/05/16/alpine_linux_318/">(issue)</a>
+# Time to return!
 
 # To stay simple and portable, my minimal environment will use a few core
 # tools in addition to busybox.
 
 function install_dev_env {
   apk update
-  apk add git tmux curl busybox-extras pandoc gettext openjdk17 graphviz
-  curl -sSL "https://github.com/plantuml/plantuml/releases/download/v1.2023.11/plantuml-1.2023.11.jar" -o /opt/plantuml.jar
+  apk add git \
+    tmux \
+    curl \
+    busybox-extras \
+    pandoc \
+    gettext \
+    openjdk17 \
+    graphviz
+  curl -sSL \
+    "https://github.com/plantuml/plantuml/releases/download/v1.2023.11/plantuml-1.2023.11.jar" \
+    -o /opt/plantuml.jar
   java -jar /opt/plantuml.jar -testdot
 }
 
 function install_dev_env_desktop {
   apk update
-  apk add dwm chromium xterm
+  apk add \
+    dwm \
+    chromium \
+    xterm
 }
 
 ###
