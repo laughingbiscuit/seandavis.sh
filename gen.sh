@@ -9,5 +9,5 @@ cp blog.sh target/
 cd target/
 
 cat blog.sh | grep -e "^function" | sed 's/function //' | sed 's/{//' | xargs -I{}  sh -c "sh blog.sh {}"
-echo -e "Try it: \`curl https://seandavis.sh/raw | sh -s -- (function)\`\n---\n\`\`\`\n\$SCRIPT\n\`\`\`" | pandoc -H head.htmlsnip -A after.htmlsnip --metadata="title=seandavis.sh" -s | SCRIPT="$(cat blog.sh)" envsubst > index.html
+echo -e "This whole site it code that works! Try it: \`curl https://seandavis.sh/raw | sh -s -- (function)\`\n---\n\`\`\`\n\$SCRIPT\n\`\`\`" | pandoc -H head.htmlsnip -A after.htmlsnip --metadata="title=seandavis.sh" -s | SCRIPT="$(cat blog.sh)" envsubst > index.html
 mv blog.sh raw
