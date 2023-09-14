@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e
+set -ex
 
 sh blog.sh install_dev_env
 rm -rf target/

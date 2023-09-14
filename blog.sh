@@ -35,6 +35,7 @@ function install_dev_env {
   apk update
   apk add git tmux curl busybox-extras pandoc gettext openjdk17
   curl -sSL "https://github.com/plantuml/plantuml/releases/download/v1.2023.11/plantuml-1.2023.11.jar" -o /opt/plantuml.jar
+  java -jar /opt/plantuml.jar -testdot
 }
 function install_dev_env_desktop {
   apk update
