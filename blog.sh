@@ -38,7 +38,7 @@ function install_dev_env {
 }
 function install_dev_env_desktop {
   apk update
-  apk add xfce-terminal dwm chromium
+  apk add dwm chromium xterm
 }
 ###
 # 3.1. Dev Env Demo - PlantUML
