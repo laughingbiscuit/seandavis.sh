@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-###
+################################
 # ______________ 
 #< seandavis.sh >
 # -------------- 
@@ -9,21 +9,21 @@
 #            (__)\       )\/\
 #                ||----w |
 #                ||     ||
-###
+################################
 
 # My notepad as a shell script
 
-###
+#################
 # 1 Introduction
-###
+#################
 
 # - Sean Davis
 # - API Geek
 # - Biker
 
-###
+##########################
 # 2 Dev Environment Setup
-###
+##########################
 
 # Since Alpine Linux 3.18, it's main issue has been solved.
 # <a href="https://www.theregister.com/2023/05/16/alpine_linux_318/">(issue)</a>
@@ -56,9 +56,9 @@ function install_dev_env_desktop {
     xterm
 }
 
-###
+###############################
 # 3.1. Dev Env Demo - PlantUML
-###
+###############################
 
 function demo_plantuml_seq {
   cat << EOF | java -jar /opt/plantuml.jar -p > demo_plantuml_seq.png
@@ -72,6 +72,7 @@ a->b: GET /
 EOF
 }
 
+# Output:
 # <img src="demo_plantuml_seq.png">
 
 function demo_plantuml_component {
@@ -90,6 +91,7 @@ cloud GCP {
 EOF
 }
 
+# Output:
 # <img src="demo_plantuml_component.png">
 
 function demo_plantuml_flow {
@@ -109,7 +111,8 @@ endif
 
 EOF
 }
+# Output:
 # <img src="demo_plantuml_flow.png">
 
-# fin
+# Thank you!
 "$@"
