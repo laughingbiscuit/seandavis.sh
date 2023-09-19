@@ -130,6 +130,10 @@ EOF
 
 function demo_k3d {
   k3d cluster create -p "8080:80@loadbalancer"
+
+  # Useful for overwriting current kube config:
+  # k3d kubeconfig write k3s-default --output ~/.kube/config
+
   docker ps
   kubectl cluster-info
   docker pull nginx:latest
