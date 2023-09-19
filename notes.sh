@@ -38,17 +38,10 @@ http://dl-cdn.alpinelinux.org/alpine/edge/main
 http://dl-cdn.alpinelinux.org/alpine/edge/community
 http://dl-cdn.alpinelinux.org/alpine/edge/testing
 EOF
+
   apk update
-  apk add git \
-    tmux \
-    curl \
-    busybox-extras \
-    pandoc \
-    gettext \
-    openjdk17 \
-    graphviz \
-    kubectl \ 
-    docker
+  apk add git tmux curl busybox-extras pandoc gettext openjdk17 graphviz kubectl docker
+
   curl -sSL \
     "https://github.com/plantuml/plantuml/releases/download/v1.2023.11/plantuml-1.2023.11.jar" \
     -o /opt/plantuml.jar
