@@ -8,6 +8,6 @@ cp static/* target/
 cp notes.sh target/
 cd target/
 
-cat notes.sh | grep -e "^function" | sed 's/function //' | sed 's/{//' | xargs -I{}  sh -c "sh notes.sh {}"
+cat notes.sh | grep -e "^function" | sed 's/function //' | sed 's/{//' | xargs -I{}  sh -e -c "sh -e notes.sh {}"
 pandoc -H head.htmlsnip -A after.htmlsnip --metadata="title=seandavis.sh" -s index.md | SCRIPT="$(cat notes.sh)" envsubst > index.html
 mv notes.sh raw
