@@ -129,39 +129,35 @@ EOF
 # see <a href="https://github.com/rancher-sandbox/rancher-desktop/issues/5092">here</a>
 
 function demo_k3d {
-  k3d cluster create 
+  k3d cluster create -p "8080:80@loadbalancer"
   docker ps
   kubectl cluster-info
 
   docker pull nginx:latest
-  docker tag nginx:latest my-nginx:latest
-  k3d image import my-nginx:latest
-
-  cat <<EOF | kubectl apply -f -
-apiVersion: apps/v1
-kind: Deployment
+  docker tag nginx:latest my-nginx:0.1 
+  k3d image import my-nginx:0.1 # similar to publishing to a registry - note this doesn't work for :latest
+  kubectl create deployment nginx --image=my-nginx:0.1
+  kubectl create service clusterip nginx --tcp=80:80
+  cat << EOF | kubectl apply -f -
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: nginx-test
-  labels:
-    app: nginx-test
+  name: nginx
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "false"
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: nginx-test
-  template:
-    metadata:
-      labels:
-        app: nginx-test
-    spec:
-      containers:
-      - name: nginx-test
-        image: my-nginx:latest
-        ports:
-        - containerPort: 80
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx
+            port:
+              number: 80
 EOF
-
-  kubectl get pods -l "app=nginx-test"
+  while ! curl -f localhost:8080/; do sleep 2; done
 
 }
 
