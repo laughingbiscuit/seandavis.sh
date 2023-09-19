@@ -41,11 +41,15 @@ function install_dev_env {
     pandoc \
     gettext \
     openjdk17 \
-    graphviz
+    graphviz \
+    kubectl \ 
+    docker
   curl -sSL \
     "https://github.com/plantuml/plantuml/releases/download/v1.2023.11/plantuml-1.2023.11.jar" \
     -o /opt/plantuml.jar
   java -jar /opt/plantuml.jar -testdot
+  curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | sh
+
 }
 
 function install_dev_env_desktop {
@@ -113,6 +117,21 @@ EOF
 }
 # Output:
 # <img src="demo_plantuml_flow.png">
+
+###
+# 3.2 K3d Demo
+###
+
+# K3d is a tool that runs k3s, a minimal kubernetes distribution, in docker. This means
+# that my host system only needs docker and can create multiple clusters for running
+# projects locally.
+
+function demo_k3d {
+  k3d cluster create mycluster
+  kubetctl get nodes
+  docker ps
+}
+
 
 # Thank you!
 "$@"
