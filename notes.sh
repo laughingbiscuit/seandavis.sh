@@ -124,11 +124,45 @@ EOF
 # K3d is a tool that runs k3s, a minimal kubernetes distribution, in docker. This means
 # that my host system only needs docker and can create multiple clusters for running
 # projects locally.
+#
+# Why not kind? It doesn't play nice in alpine on ARM
+# see <a href="https://github.com/rancher-sandbox/rancher-desktop/issues/5092">here</a>
 
 function demo_k3d {
-  k3d cluster create mycluster
+  k3d cluster create 
   docker ps
   kubectl cluster-info
+
+  docker pull nginx:latest
+  docker tag nginx:latest my-nginx:latest
+  k3d image import my-nginx:latest
+
+  cat <<EOF | kubectl apply -f -
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-test
+  labels:
+    app: nginx-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-test
+  template:
+    metadata:
+      labels:
+        app: nginx-test
+    spec:
+      containers:
+      - name: nginx-test
+        image: my-nginx:latest
+        ports:
+        - containerPort: 80
+EOF
+
+  kubectl get pods -l "app=nginx-test"
+
 }
 
 
