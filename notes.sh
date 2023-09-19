@@ -37,7 +37,6 @@ cat <<EOF > /etc/apk/repositories
 http://dl-cdn.alpinelinux.org/alpine/edge/main
 http://dl-cdn.alpinelinux.org/alpine/edge/community
 http://dl-cdn.alpinelinux.org/alpine/edge/testing
-https://downloads.1password.com/linux/alpinelinux/stable/
 EOF
   apk update
   apk add git \
