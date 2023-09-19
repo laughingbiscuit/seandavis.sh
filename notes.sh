@@ -132,31 +132,12 @@ function demo_k3d {
   k3d cluster create -p "8080:80@loadbalancer"
   docker ps
   kubectl cluster-info
-
   docker pull nginx:latest
   docker tag nginx:latest my-nginx:0.1 
   k3d image import my-nginx:0.1 # similar to publishing to a registry - note this doesn't work for :latest
   kubectl create deployment nginx --image=my-nginx:0.1
   kubectl create service clusterip nginx --tcp=80:80
-  cat << EOF | kubectl apply -f -
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: nginx
-  annotations:
-    ingress.kubernetes.io/ssl-redirect: "false"
-spec:
-  rules:
-  - http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: nginx
-            port:
-              number: 80
-EOF
+  kubectl create ingress nginx --rule="/=nginx:80" 
   while ! curl -f localhost:8080/; do sleep 2; done
 
 }
