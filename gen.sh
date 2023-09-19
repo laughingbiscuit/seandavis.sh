@@ -1,7 +1,7 @@
 #!/bin/sh
 set -ex
 
-sh blog.sh install_dev_env
+sh notes.sh install_dev_env
 rm -rf target/
 mkdir target/
 cp static/* target/
