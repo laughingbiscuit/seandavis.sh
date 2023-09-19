@@ -127,8 +127,8 @@ EOF
 
 function demo_k3d {
   k3d cluster create mycluster
-  while ! kubectl get nodes; do sleep 2; done
   docker ps
+  kubectl get nodes
 }
 
 
