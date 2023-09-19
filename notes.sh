@@ -128,7 +128,7 @@ EOF
 function demo_k3d {
   k3d cluster create mycluster
   docker ps
-  kubectl get nodes
+  kubectl cluster-info
 }
 
 
