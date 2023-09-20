@@ -41,7 +41,7 @@ http://dl-cdn.alpinelinux.org/alpine/edge/testing
 EOF
 
   apk update
-  apk add git tmux curl busybox-extras pandoc gettext openjdk17 graphviz kubectl docker
+  apk add git tmux curl busybox-extras pandoc gettext openjdk17 graphviz kubectl docker expect asciinema
 
   curl -sSL \
     "https://github.com/plantuml/plantuml/releases/download/v1.2023.11/plantuml-1.2023.11.jar" \
@@ -146,6 +146,15 @@ function demo_k3d {
 
 }
 
+###
+# 3.3 Expect + Asciinema demo
+###
+
+# Scripting recorded demos
+# Loosely based on: https://blog.waleedkhan.name/automating-terminal-demos/
+
+function demo_expect_asciinema {
+}
 
 # Thank you!
 "$@"
