@@ -154,6 +154,7 @@ function demo_k3d {
 # Loosely based on: https://blog.waleedkhan.name/automating-terminal-demos/
 
 function demo_expect_asciinema {
+  echo "TODO"
 }
 
 # Thank you!
