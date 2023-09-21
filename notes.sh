@@ -154,47 +154,8 @@ function demo_k3d {
 # Loosely based on: https://blog.waleedkhan.name/automating-terminal-demos/
 
 function demo_expect_asciinema {
-  cat <<EOF | expect -f -
-set timeout 1
-set send_human {0.1 0.3 1 0.05 1}
-set CTRLC \003
-
-proc expect_prompt {} {
-    expect "$ "
+  echo "TODO"
 }
-
-proc run_command {cmd} {
-    send -h "$cmd"
-    sleep 3
-    send "\r"
-    expect -timeout 1
-}
-
-proc send_keystroke_to_interactive_process {key {addl_sleep 2}} {
-    send "$key"
-    expect -timeout 1
-    sleep $addl_sleep
-}
-
-spawn asciinema rec my.rec
-expect_prompt
-
-run_command "echo Hello, world!"
-run_command "vim foo.txt"
-
-send_keystroke_to_interactive_process "i"
-send -h "Example text"
-send_keystroke_to_interactive_process "$CTRLC"
-send -h ":wq\r"
-expect_prompt
-
-send "exit"
-
-EOF
-  docker run --rm -v $PWD:/data asciinema/asciicast2gif my.rec myrec.gif
-}
-# Output:
-# <img src="myrec.gif">
 
 # Thank you!
 "$@"
