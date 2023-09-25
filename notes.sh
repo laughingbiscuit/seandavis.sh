@@ -156,9 +156,10 @@ function demo_k3d {
 
 # Scripting recorded demos
 # Loosely based on: https://blog.waleedkhan.name/automating-terminal-demos/
+# try in tmux?
 
 function demo_expect_asciinema {
-  cat << EOF | expect -f -
+  cat << EOF > recscript
 set timeout 1
 set send_human {0.1 0.3 1 0.05 1}
 set CTRLC \003
@@ -194,9 +195,12 @@ send -h ":wq\r"
 expect_prompt
 
 send "exit"
-
 EOF
+tmux new-session -d -s recsession
+tmux send-keys -t recsession.0 "expect -f recscript; tmux wait -S lock ENTER"
+tmux wait lock
 agg out.cast out.gif
+
 }
 # Output:
 # <img src="out.gif">
