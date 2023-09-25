@@ -175,10 +175,10 @@ proc run_command {cmd} {
     expect -timeout 1
 }
 
-proc send_keystroke_to_interactive_process {key {addl_sleep 2}} {
+proc send_keystroke_to_interactive_process {key } {
     send "$key"
     expect -timeout 1
-    sleep $addl_sleep
+    sleep 2
 }
 
 spawn asciinema rec out.cast
@@ -188,7 +188,6 @@ run_command "echo Hello, world!"
 run_command "vi foo.txt"
 
 send_keystroke_to_interactive_process "i"
-send_keystroke_to_interactive_process "Example text"
 send -h "Example text"
 send_keystroke_to_interactive_process "$CTRLC"
 send -h ":wq\r"
