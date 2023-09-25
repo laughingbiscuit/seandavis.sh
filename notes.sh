@@ -41,15 +41,17 @@ http://dl-cdn.alpinelinux.org/alpine/edge/testing
 EOF
 
   apk update
-  apk add git tmux curl busybox-extras pandoc gettext openjdk17 graphviz kubectl docker expect asciinema font-jetbrains-mono
+  apk add git tmux curl busybox-extras pandoc gettext openjdk17 graphviz kubectl docker expect asciinema font-jetbrains-mono nodejs
+
 
   curl -sSL \
     "https://github.com/plantuml/plantuml/releases/download/v1.2023.11/plantuml-1.2023.11.jar" \
     -o /opt/plantuml.jar
-  curl -sSL \
-    "https://github.com/asciinema/agg/releases/download/v1.4.2/agg-x86_64-unknown-linux-musl" \
-    -o /usr/bin/agg
-  chmod +x /usr/bin/agg
+#  curl -sSL \
+#    "https://github.com/asciinema/agg/releases/download/v1.4.2/agg-x86_64-unknown-linux-musl" \
+#    -o /usr/bin/agg
+#  chmod +x /usr/bin/agg
+  npm i -g asciicast2gif
   java -jar /opt/plantuml.jar -testdot
   curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | sh
 
@@ -177,7 +179,8 @@ EOF
 
   cat out.cast
   uname -a
-  RUST_BACKTRACE=full agg out.cast out.gif
+#  RUST_BACKTRACE=full agg out.cast out.gif
+  asciicast2gif out.cast out.gif
 }
 # Output:
 # <img src="out.gif">
