@@ -177,7 +177,7 @@ EOF
 
   cat out.cast
   uname -a
-  RUST_BACKTRACE=1 agg out.cast out.gif
+  RUST_BACKTRACE=full agg out.cast out.gif
 }
 # Output:
 # <img src="out.gif">
