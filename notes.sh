@@ -178,7 +178,7 @@ proc run_command {cmd} {
 proc send_keystroke_to_interactive_process {key {addl_sleep 2}} {
     send "$key"
     expect -timeout 1
-    sleep 2
+    sleep $addl_sleep
 }
 
 spawn asciinema rec out.cast
