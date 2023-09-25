@@ -174,7 +174,7 @@ EOF
 
 }
 # Output:
-# <div id="demo_expect_asciinema_player"></div>
+# <div id="democast"></div>
 
 # Thank you!
 "$@"

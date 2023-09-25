@@ -19,4 +19,4 @@
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 
 <script src="/asciinema-player.min.js"></script>
-<script>AsciinemaPlayer.create('/out.cast', document.getElementById('demo_expect_asciinema_player'));</script>
+<script>AsciinemaPlayer.create('/out.cast', document.getElementById('democast'));</script>
