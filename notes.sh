@@ -41,7 +41,7 @@ http://dl-cdn.alpinelinux.org/alpine/edge/testing
 EOF
 
   apk update
-  apk add git tmux curl busybox-extras pandoc gettext openjdk17 graphviz kubectl docker expect asciinema
+  apk add git tmux curl busybox-extras pandoc gettext openjdk17 graphviz kubectl docker expect asciinema font-jetbrains-mono
 
   curl -sSL \
     "https://github.com/plantuml/plantuml/releases/download/v1.2023.11/plantuml-1.2023.11.jar" \
@@ -176,7 +176,7 @@ send -h "exit\r"
 EOF
 
   cat out.cast
-
+  uname -a
   agg out.cast out.gif
 }
 # Output:
