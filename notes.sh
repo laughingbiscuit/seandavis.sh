@@ -166,6 +166,7 @@ set CTRLC \003
 
 spawn asciinema rec out.cast
 
+expect '#' -timeout 10
 send -h "echo Hello, world!"
 sleep 2
 send "\r"
