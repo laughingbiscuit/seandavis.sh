@@ -175,6 +175,8 @@ send -h "exit\r"
 
 EOF
 
+  cat out.cast
+
   agg out.cast out.gif
 }
 # Output:
