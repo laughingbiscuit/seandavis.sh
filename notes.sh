@@ -174,7 +174,7 @@ EOF
 
 }
 # Output:
-# <div id="demo_expect_asciinema_player"></div><script>AsciinemaPlayer.create('/demo.cast', document.getElementById('demo_expect_asciinema_player'));</script>
+# <div id="demo_expect_asciinema_player"></div><script>AsciinemaPlayer.create('/out.cast', document.getElementById('demo_expect_asciinema_player'));</script>
 
 # Thank you!
 "$@"
