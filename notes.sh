@@ -46,6 +46,10 @@ EOF
   curl -sSL \
     "https://github.com/plantuml/plantuml/releases/download/v1.2023.11/plantuml-1.2023.11.jar" \
     -o /opt/plantuml.jar
+  curl -sSL \
+    "https://github.com/asciinema/agg/releases/download/v1.4.2/agg-x86_64-unknown-linux-musl" \
+    -o /usr/bin/agg
+  chmod +x /usr/bin/agg
   java -jar /opt/plantuml.jar -testdot
   curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | sh
 
@@ -154,8 +158,48 @@ function demo_k3d {
 # Loosely based on: https://blog.waleedkhan.name/automating-terminal-demos/
 
 function demo_expect_asciinema {
-  echo "TODO"
+  cat << EOF | expect -f -
+set timeout 1
+set send_human {0.1 0.3 1 0.05 1}
+set CTRLC \003
+
+proc expect_prompt {} {
+    expect "$ "
 }
+
+proc run_command {cmd} {
+    send -h "$cmd"
+    sleep 3
+    send "\r"
+    expect -timeout 1
+}
+
+proc send_keystroke_to_interactive_process {key {addl_sleep 2}} {
+    send "$key"
+    expect -timeout 1
+    sleep $addl_sleep
+}
+
+spawn asciinema rec out.cast
+expect_prompt
+
+run_command "echo Hello, world!"
+run_command "vi foo.txt"
+
+send_keystroke_to_interactive_process "i"
+send_keystroke_to_interactive_process "Example text"
+send -h "Example text"
+send_keystroke_to_interactive_process "$CTRLC"
+send -h ":wq\r"
+expect_prompt
+
+send "exit"
+
+EOF
+agg out.cast out.gif
+}
+# Output:
+# <img src="out.gif">
 
 # Thank you!
 "$@"
