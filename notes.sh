@@ -159,6 +159,7 @@ function demo_k3d {
 # try in tmux?
 
 function demo_expect_asciinema {
+set -x
   cat << EOF > recscript
 set timeout 1
 set send_human {0.1 0.3 1 0.05 1}
