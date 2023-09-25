@@ -168,7 +168,8 @@ send -h "echo Hello, world!"
 sleep 2
 send "\r"
 expect "Hello, World!" -timeout 1
-send -h "exit\r"
+send -h "exit\r\n"
+expect -timeout 1
 
 EOF
 
