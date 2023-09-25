@@ -197,10 +197,14 @@ expect_prompt
 
 send "exit"
 EOF
+mkfifo /wait
 tmux new-session -d -s recsession
-tmux send-keys -t recsession.0 "expect -f recscript; tmux wait -S lock ENTER"
-tmux wait lock
-agg out.cast out.gif
+tmux send-keys -t recsession.0 "expect -f recscript; echo . > /wait ENTER"
+read -t 30 WAIT <>/wait
+
+[ -z "$WAIT" ] && 
+  echo 'The operation failed to complete within 10 seconds.' ||
+  agg out.cast out.gif
 
 }
 # Output:
