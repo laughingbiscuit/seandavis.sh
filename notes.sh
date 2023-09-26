@@ -155,6 +155,7 @@ function demo_k3d {
 # Loosely based on: https://blog.waleedkhan.name/automating-terminal-demos/
 
 function demo_expect_asciinema {
+exit
 set -x
   cat << EOF | expect -f -
 set timeout 5
