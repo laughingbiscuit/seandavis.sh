@@ -155,8 +155,7 @@ function demo_k3d {
 # Loosely based on: https://blog.waleedkhan.name/automating-terminal-demos/
 
 function demo_expect_asciinema {
-exit
-set -x
+  set -x
   cat << EOF | expect -f -
 set timeout 5
 set send_human {0.1 0.3 1 0.05 1}
