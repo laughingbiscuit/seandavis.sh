@@ -13,15 +13,15 @@
 
 # My notepad as a shell script
 
-#################
-# 1 Introduction <div id="1"><a href="#1">-</a></div>
+#################<div id="1"><a href="#1"><sub>jump</sub></a></div>
+# 1 Introduction 
 #################
 
 # - Sean Davis
 # - API Geek
 # - Biker
 
-##########################
+##########################<div id="2"><a href="#2"><sub>jump</sub></a></div>
 # 2 Dev Environment Setup
 ##########################
 
@@ -60,7 +60,7 @@ function install_dev_env_desktop {
     xterm
 }
 
-###############################
+###############################<div id="3.1"><a href="#3.1"><sub>jump</sub></a></div>
 # 3.1. Dev Env Demo - PlantUML
 ###############################
 
@@ -118,7 +118,7 @@ EOF
 # Output:
 # <img src="demo_plantuml_flow.png">
 
-###
+###<div id="3.2"><a href="#3.2"><sub>jump</sub></a></div>
 # 3.2 K3d Demo
 ###
 
@@ -147,7 +147,7 @@ function demo_k3d {
 
 }
 
-###
+###<div id="3.3"><a href="#3.3"><sub>jump</sub></a></div>
 # 3.3 Expect + Asciinema demo
 ###
 
