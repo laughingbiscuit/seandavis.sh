@@ -13,7 +13,7 @@
 
 # My notepad as a shell script
 
-#################<div id="1"><a href="#1"><sub>jump</sub></a></div>
+################# <a id="1" href="#1"><sub>jump</sub></a>
 # 1 Introduction 
 #################
 
@@ -21,7 +21,7 @@
 # - API Geek
 # - Biker
 
-##########################<div id="2"><a href="#2"><sub>jump</sub></a></div>
+########################## <a id="2" href="#2"><sub>jump</sub></a>
 # 2 Dev Environment Setup
 ##########################
 
@@ -60,7 +60,7 @@ function install_dev_env_desktop {
     xterm
 }
 
-###############################<div id="3.1"><a href="#3.1"><sub>jump</sub></a></div>
+############################### <a id="3.1" href="#3.1"><sub>jump</sub></a>
 # 3.1. Dev Env Demo - PlantUML
 ###############################
 
@@ -118,9 +118,9 @@ EOF
 # Output:
 # <img src="demo_plantuml_flow.png">
 
-###<div id="3.2"><a href="#3.2"><sub>jump</sub></a></div>
+############### <a id="3.2" href="#3.2"><sub>jump</sub></a>
 # 3.2 K3d Demo
-###
+###############
 
 # K3d is a tool that runs k3s, a minimal kubernetes distribution, in docker. This means
 # that my host system only needs docker and can create multiple clusters for running
@@ -147,9 +147,9 @@ function demo_k3d {
 
 }
 
-###<div id="3.3"><a href="#3.3"><sub>jump</sub></a></div>
+############################## <a id="3.3" href="#3.3"><sub>jump</sub></a>
 # 3.3 Expect + Asciinema demo
-###
+##############################
 
 # Scripting recorded demos
 # Loosely based on: https://blog.waleedkhan.name/automating-terminal-demos/
