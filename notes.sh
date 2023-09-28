@@ -130,6 +130,7 @@ EOF
 # see <a href="https://github.com/rancher-sandbox/rancher-desktop/issues/5092">here</a>
 
 function demo_k3d {
+exit
   k3d cluster create -p "8080:80@loadbalancer"
 
   # Useful for overwriting current kube config:
@@ -163,11 +164,22 @@ set CTRLC \003
 
 spawn asciinema rec out.cast
 
-expect '#' -timeout 10
+expect "~/seandavis.sh/target #"
 send -h "echo Hello, world!"
 sleep 2
 send "\r"
 expect "Hello, World!" -timeout 1
+send -h "vi"
+sleep 2
+send "\r"
+sleep 2
+send -h "ihello"
+sleep 2
+send -h "\x1b"
+sleep 2
+send -h ":q!"
+sleep 2
+send "\r"
 send -h "exit\r\n"
 expect -timeout 1
 
