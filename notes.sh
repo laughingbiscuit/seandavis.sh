@@ -16,21 +16,21 @@
 ################# <a id="1" href="#1"><sub>jump</sub></a>
 # 1 Introduction 
 #################
-
 # - Sean Davis
 # - API Geek
 # - Biker
+#################
 
-########################## <a id="2" href="#2"><sub>jump</sub></a>
+############################################################ <a id="2" href="#2"><sub>jump</sub></a>
 # 2 Dev Environment Setup
-##########################
-
+############################################################
 # Since Alpine Linux 3.18, it's main issue has been solved.
 # <a href="https://www.theregister.com/2023/05/16/alpine_linux_318/">(issue)</a>
 # Time to return!
-
+#
 # To stay simple and portable, my minimal environment will use a few core
 # tools in addition to busybox.
+############################################################
 
 function install_dev_env {
 
@@ -118,16 +118,16 @@ EOF
 # Output:
 # <img src="demo_plantuml_flow.png">
 
-############### <a id="3.2" href="#3.2"><sub>jump</sub></a>
+######################################################################################## <a id="3.2" href="#3.2"><sub>jump</sub></a>
 # 3.2 K3d Demo
-###############
-
+########################################################################################
 # K3d is a tool that runs k3s, a minimal kubernetes distribution, in docker. This means
 # that my host system only needs docker and can create multiple clusters for running
 # projects locally.
 #
 # Why not kind? It doesn't play nice in alpine on ARM
 # see <a href="https://github.com/rancher-sandbox/rancher-desktop/issues/5092">here</a>
+########################################################################################
 
 function demo_k3d {
 exit
