@@ -205,7 +205,7 @@ function prototype_busybox_web {
   (cd prototype_busybox_web &&
     echo "<html><body><p>Hello World!</p></body></html>" > index.html &&
     httpd -p 8081 -h .
-    while ! curl -f http://localhost:8081/; do sleep 1; done
+    while ! curl -f http://localhost:8081/; do sleep 1; done)
 }
 
 # Thank you!
