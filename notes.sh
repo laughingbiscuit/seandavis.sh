@@ -189,5 +189,24 @@ EOF
 # Output:
 # <div id="democast"></div>
 
+############################## <a id="4.1" href="#4.1"><sub>jump</sub></a>
+# 4.1 Prototyping with Busybox
+##############################
+# Sometimes it is useful to build working prototypes, whilst
+# making sure they are low-resolution and stakeholders don't
+# believe it is the 'finished product'.
+#
+# Using busybox httpd, shell scripts and curl we can mock up
+# user flows.
+##############################
+
+function prototype_busybox_web {
+  mkdir -p prototype_busybox_web 
+  (cd prototype_busybox_web &&
+    echo "<html><body><p>Hello World!</p></body></html>" > index.html &&
+    httpd -p 8081 -h .
+    while ! curl -f http://localhost:8081/; do sleep 1; done
+}
+
 # Thank you!
 "$@"
