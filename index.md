@@ -128,6 +128,7 @@ expect -timeout 1
 
 EOF
 
+while [[ $(cat out.cast | wc -l) -lt 2 ]]; do sleep 2; done
 cat out.cast | tail -n +2 > out.snip
 echo '{"version": 2, "width": 66, "height": 15, "timestamp": 1695663471, "env": {"SHELL": "/bin/ash", "TERM": "xterm-256color"}}' > out.cast
 cat out.snip >> out.cast
