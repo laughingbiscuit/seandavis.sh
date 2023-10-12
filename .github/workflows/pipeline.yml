@@ -31,7 +31,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - run: docker run --net=host -v /var/run/docker.sock:/var/run/docker.sock -v $(pwd):/seandavis.sh -w /seandavis.sh -i alpine:latest sh gen.sh
+      - run: docker run --net=host -v /var/run/docker.sock:/var/run/docker.sock -v $(pwd):/seandavis.sh -w /seandavis.sh -i alpine:latest sh run.sh
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
