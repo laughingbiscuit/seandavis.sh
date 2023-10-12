@@ -168,9 +168,9 @@ function prototype_busybox_web {
 
 ![](demo_plantuml_flow.png)
 
+<div id="democast"></div>
 <script>AsciinemaPlayer.create('/out.cast', document.getElementById('democast'));</script>
 
-<div id="democast"></div>
 
 # Headless chrome
 
