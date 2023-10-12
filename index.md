@@ -14,7 +14,8 @@ http://dl-cdn.alpinelinux.org/alpine/edge/testing
 EOF
 
   apk update
-  apk add git tmux curl busybox-extras pandoc gettext openjdk17 graphviz kubectl docker expect asciinema
+  apk add git tmux curl busybox-extras pandoc gettext openjdk17 graphviz \
+    kubectl docker expect asciinema chromium chromium-chromedriver xvfb-run
 
 
   curl -sSL \
@@ -170,3 +171,25 @@ function prototype_busybox_web {
 ![](demo_plantuml_flow.png)
 
 <div id="democast"></div>
+
+# Headless chrome
+
+```
+function demo_headless_chrome_curl {
+  xvfb-run chromedriver --disable-dev-shm-usage --disable-gpu --no-sandbox --disable-setuid-sandbox &
+  while ! curl -f localhost:9515; do sleep 2; done
+  SESSION_ID=$(curl localhost:9515/session -d '{
+    "desiredCapabilities": {
+      "browserName": "chromium",
+      "chromeOptions": {
+        "args": ["--no-sandbox", "--headless"]
+      }
+    }
+  }'| jq -r '.sessionId')
+  
+  sleep 2
+  curl -s localhost:9515/session/$SESSION_ID/url -d '{"url":"https://example.com/"}' >/dev/null
+  sleep 2
+  curl localhost:9515/session/$SESSION_ID/screenshot | jq -r '.value' | base64 -d > last-screenshot.png
+}
+```
