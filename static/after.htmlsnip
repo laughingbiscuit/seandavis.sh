@@ -1,37 +1,7 @@
-<div id="discuss">
-<script src="https://giscus.app/client.js"
-        data-repo="laughingbiscuit/seandavis.sh"
-        data-repo-id="R_kgDOKRhG6Q"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOKRhG6c4CZM9K"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="light"
-        data-lang="en"
+<script src="https://utteranc.es/client.js"
+        repo="laughingbiscuit/seandavis.sh"
+        issue-term="title"
+        theme="github-light"
         crossorigin="anonymous"
         async>
 </script>
-</div>
-
-<script src="/asciinema-player.min.js"></script>
-<script>AsciinemaPlayer.create('/out.cast', document.getElementById('democast'));</script>
-<script>
-function encodePreElements() {
-    var pre = document.getElementsByTagName('pre');
-    for(var i = 0; i < pre.length; i++) {
-        var encoded = htmlEncode(pre[i].innerHTML);
-        pre[i].innerHTML = encoded;
-    }
-};
-
-function htmlEncode(value) {
-   var div = document.createElement('div');
-   var text = document.createTextNode(value);
-   div.appendChild(text);
-   return div.innerHTML;
-}
-window.onload = encodePreElements;
-</script> 
