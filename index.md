@@ -177,7 +177,7 @@ function prototype_busybox_web {
 ```
 function demo_headless_chrome_curl {
   xvfb-run chromedriver --disable-dev-shm-usage --disable-gpu --no-sandbox --disable-setuid-sandbox &
-  while ! curl -f localhost:9515/session; do sleep 2; done
+  while ! curl -f localhost:9515/status; do sleep 2; done
   SESSION_ID=$(curl localhost:9515/session -d '{
     "desiredCapabilities": {
       "browserName": "chromium",
