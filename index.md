@@ -160,9 +160,7 @@ function prototype_busybox_web {
 
 ![](demo_plantuml_seq.png)
 
-![](demo_plantuml_components.png)
-
-![](demo_plantuml_flow.png)
+![](demo_plantuml_component.png)
 
 ![](demo_plantuml_flow.png)
 
