@@ -1,3 +1,4 @@
+_All functions on this page are tested by pipeline._
 [![Pipeline](https://github.com/laughingbiscuit/seandavis.sh/actions/workflows/pipeline.yml/badge.svg)](https://github.com/laughingbiscuit/seandavis.sh/actions/workflows/pipeline.yml)
 
 # Section 1
@@ -40,6 +41,6 @@ Test again
 
 ```
 function hello {
-  echo "hello"
+  echo '<html><body><p>Hello World!</p></body></html>' > index.html
 }
 ```
