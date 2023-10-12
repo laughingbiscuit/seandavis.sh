@@ -1,4 +1,4 @@
-All functions on this page are tested by pipeline: [![Pipeline](https://github.com/laughingbiscuit/seandavis.sh/actions/workflows/pipeline.yml/badge.svg)](https://github.com/laughingbiscuit/seandavis.sh/actions/workflows/pipeline.yml)
+[![Pipeline](https://github.com/laughingbiscuit/seandavis.sh/actions/workflows/pipeline.yml/badge.svg)](https://github.com/laughingbiscuit/seandavis.sh/actions/workflows/pipeline.yml)
 
 # Section 1
 
