@@ -193,3 +193,5 @@ function demo_headless_chrome_curl {
   curl localhost:9515/session/$SESSION_ID/screenshot | jq -r '.value' | base64 -d > last-screenshot.png
 }
 ```
+
+![](last-screenshot.png)
