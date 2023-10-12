@@ -5,5 +5,4 @@
         crossorigin="anonymous"
         async>
 </script>
-<script>AsciinemaPlayer.create('/out.cast', document.getElementById('democast'));</script>
 
