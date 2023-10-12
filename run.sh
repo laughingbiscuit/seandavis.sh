@@ -14,7 +14,7 @@ echo '"$@"' >> target/index.sh
   cat index.sh | grep -e "^function" | sed 's/function //' | sed 's/{//' | xargs -I{} sh -e -c "sh -e index.sh {}")
 
 # generate html
-pandoc index.md --metadata="title=seandavis.sh" -s --toc -o target/index.html
+pandoc index.md -H static/head.htmlsnip --metadata="title=seandavis.sh" -s --toc -o target/index.html
 
 #fix cast files
 #cat out.cast | tail -n +2 > out.snip
