@@ -1,3 +1,5 @@
+[![Pipeline](https://github.com/laughingbiscuit/seandavis.sh/actions/workflows/pipeline.yml/badge.svg)](https://github.com/laughingbiscuit/seandavis.sh/actions/workflows/pipeline.yml)
+
 # Section 1
 
 ## Subsection 1
