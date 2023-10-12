@@ -5,4 +5,5 @@ body {
 </style>
 
 <link rel="stylesheet" type="text/css" href="/asciinema-player.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
 
