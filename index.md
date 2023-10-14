@@ -166,6 +166,7 @@ function demo_expect_asciinema {
   set -x
   cat << EOF | expect -f -
 set timeout 5
+set send_human {0.1 0.3 1 0.05 1}
 spawn asciinema rec out.cast
 
 expect "~/seandavis.sh/target #"
