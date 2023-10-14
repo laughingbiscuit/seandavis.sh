@@ -261,10 +261,18 @@ function demo_pandoc_pdf {
   font-family: "Runescape Plain 12";
   src: url(rs-fonts/ttf/RuneScape-Plain-12.ttf);
 }
-
+@page {
+    @top-right{
+        content: "Page " counter(page) " of " counter(pages);
+    }
+}
 * {
     font-family: "Runescape Plain 12";
 }
+h1 {
+  color: yellow;
+}
+
 EOF
   cat << EOF | pandoc --metadata title="" -s -c rs.css --pdf-engine weasyprint -o sample.html
 
