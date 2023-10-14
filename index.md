@@ -255,7 +255,7 @@ heavy, so I try to avoid the need to style my docs where possible.
 ```
 function demo_pandoc_pdf {
   curl -sSL -o rs-fonts.zip https://github.com/RuneStar/fonts/releases/download/1.103-0/RuneScape-Fonts.zip
-  mkdir -p rs-fonts && cd rs-fonts && unzip ../rs-fonts.zip 
+  (mkdir -p rs-fonts && cd rs-fonts && unzip ../rs-fonts.zip) 
   cat << EOF > rs.css
   @font-face {
   font-family: p12_full;
