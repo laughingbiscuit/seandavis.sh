@@ -252,15 +252,17 @@ heavy, so I try to avoid the need to style my docs where possible.
 
 ```
 function demo_pandoc_pdf {
-  cat << EOF | pandoc --pdf-engine weasyprint -o sample.pdf -
+  cat << EOF | pandoc --pdf-engine weasyprint -o sample.html -
 
 # Hello World
 
 Some text here
 EOF
+  pandoc --pdf-engine sample.html -o sample.pdf
 }
 ```
-<iframe src="https://view.officeapps.live.com/op/embed.aspx?src=https://seandavis.sh/sample.pdf" width='100%' height='900px' frameborder='0'>This is an embedded <a target='_blank' href='http://office.com'>Microsoft Office</a> document, powered by <a target='_blank' href='http://office.com/webapps'>Office Online</a>.</iframe>
+
+For best results, I convert to HTML before PDF. You can see the results here for [html](sample.html) and [pdf](html).
 
 ## Git
 
