@@ -239,8 +239,7 @@ Some text here
 EOF
 }
 ```
-
-<object data="sample.pdf" type="application/pdf" width="100%" height="500px">
+<iframe src="https://docs.google.com/gview?url=https://seandavis.sh/sample.pdf&embedded=true"></iframe>
 
 ## Git
 
