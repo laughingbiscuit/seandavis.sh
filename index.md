@@ -286,35 +286,6 @@ EOF
 Markdown presentation viewer in the terminal. Using this tool makes presentations
 standout compared with powerpoints and it is really quick to use.
 
-```
-function demo_mdp {
-cat << EOF > demo.mdp
-# Slide 1
-
-Hello World
-
----
-
-# Slide 2
-
-Thank you!
-EOF
-  cat << EOF | expect -f -
-set timeout 3
-set send_human {0.1 0.3 1 0.05 1}
-spawn asciinema rec --cols 60 --rows 15 mdp.cast
-
-expect "~/seandavis.sh/target #"
-send -h "TERM=xterm\r"
-sleep 1
-send -h "tmux\r"
-expect "~/seandavis.sh/target #"
-send -h "yes | mdp demo.mdp\r"
-expect -timeout 5
-EOF
-}
-```
-
 <div id="mdpcast"></div>
 <script>AsciinemaPlayer.create('/mdp.cast', document.getElementById('mdpcast'));</script>
 
