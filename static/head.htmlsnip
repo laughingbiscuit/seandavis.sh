@@ -14,6 +14,4 @@ a:visited {
 </style>
 
 <link rel="stylesheet" type="text/css" href="/asciinema-player.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
-<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/web/pdf_viewer.min.css">

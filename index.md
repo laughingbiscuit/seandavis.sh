@@ -262,7 +262,7 @@ EOF
 }
 ```
 
-<iframe id="pdf-js-viewer" src="/web/viewer.html?file=%2sample.pdf" title="webviewer" frameborder="0" width="100%" height="600"></iframe>
+<embed src="sample.pdf" type="application/pdf" width="100%" height="600px" />
 
 ## Git
 
