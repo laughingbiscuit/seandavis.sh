@@ -261,7 +261,7 @@ function demo_pandoc_pdf {
   font-family: p12_full;
   src: url(rs-fonts/ttf/RuneScape-Plain-12.ttf);
   }
-  EOF
+EOF
   cat << EOF | pandoc -c rs.css --pdf-engine weasyprint -o sample.html -
 
 # Hello World
