@@ -166,7 +166,7 @@ function demo_expect_asciinema {
   cat << EOF | expect -f -
 set timeout 5
 set send_human {0.1 0.3 1 0.05 1}
-spawn asciinema rec out.cast
+spawn asciinema rec --cols 60 --rows 15 out.cast
 
 expect "~/seandavis.sh/target #"
 send -h "echo Hello, world!"; sleep 2
@@ -183,13 +183,6 @@ send "\r"
 send -h "exit\r\n"
 
 EOF
-
-# note - when this runs in GitHub Actions, the width and height are 0.
-# We fix this here. 
-while [[ $(cat out.cast | wc -l) -lt 2 ]]; do sleep 2; done
-cat out.cast | tail -n +2 > out.snip
-echo '{"version": 2, "width": 66, "height": 15, "timestamp": 1695663471, "env": {"SHELL": "/bin/ash", "TERM": "xterm-256color"}}' > out.cast
-cat out.snip >> out.cast
 
 }
 ```
