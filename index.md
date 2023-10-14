@@ -258,7 +258,7 @@ function demo_pandoc_pdf {
 
 Some text here
 EOF
-  pandoc --pdf-engine sample.html -o sample.pdf
+  pandoc --pdf-engine weasyprint sample.html -o sample.pdf
 }
 ```
 
