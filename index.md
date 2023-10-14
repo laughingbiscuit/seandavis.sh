@@ -21,8 +21,6 @@ function install_dev_env {
 
   cat << EOF > /etc/apk/repositories
 http://dl-cdn.alpinelinux.org/alpine/edge/main
-http://dl-cdn.alpinelinux.org/alpine/edge/community
-http://dl-cdn.alpinelinux.org/alpine/edge/testing
 EOF
 
   apk update
@@ -42,7 +40,6 @@ function install_dev_env_desktop {
   apk update
   apk add \
     dwm \
-    chromium \
     xterm
 }
 ```
