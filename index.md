@@ -1,6 +1,20 @@
-# Section 1
+# Development Environment
 
-## Subsection 1
+I like to keep things simple. I strive to develop expertise in a small number
+of powerful, platform-agnostic open-source tools. This means that with a browser
+and a terminal I have my favourite tools available and avoid vendor lock-in.
+
+My development environment follows me. Whether using Linux, Windows and Busybox-w32,
+Mac OS and Docker or Android and Termux I have what I need.
+
+I like to start with an Alpine Linux base. I appreciate the philosophy, lightness,
+simplicity and POSIX compliance of its components. For a while I was put off by
+muslibc's lack of DNS over TCP, however this is resolved in newer versions.
+
+I occasionally need to make exceptions when using tools that require glibc or have
+no ARM support, however I can fallback to SSHing into a remote VM when needed.
+
+## Installation
 
 ```
 function install_dev_env {
@@ -31,22 +45,35 @@ function install_dev_env_desktop {
     chromium \
     xterm
 }
+```
 
+## PlantUML
+
+Learning the syntax of plantuml has allowed me to transfer the benefits 
+of in-person whiteboarding into a remote environment, and the ability
+of storing the source for a diagram in version control is much easier
+to manage than an presentation or UI diagramming tool.
+
+Typically I will create mindmaps, sequence, flow and component diagrams.
+For anything else, I will create a plaintext file in `vi`.
+
+```
 function demo_plantuml_seq {
   cat << EOF | java -jar /opt/plantuml.jar -p > demo_plantuml_seq.png
-
 
 @startuml
 a->b: GET /
 @enduml
 
-
 EOF
 }
+```
 
+![](demo_plantuml_seq.png)
+
+```
 function demo_plantuml_component {
   cat << EOF | java -jar /opt/plantuml.jar -p > demo_plantuml_component.png
-
 
 @startuml
 cloud GCP {
@@ -56,13 +83,15 @@ cloud GCP {
 }
 @enduml
 
-
 EOF
 }
+```
 
+![](demo_plantuml_component.png)
+
+```
 function demo_plantuml_flow {
   cat << EOF | java -jar /opt/plantuml.jar -p > demo_plantuml_flow.png
-
 
 @startuml
 :step one;
@@ -74,12 +103,30 @@ endif
 :step two;
 @enduml
 
-
 EOF
 }
+```
 
+![](demo_plantuml_flow.png)
+
+## Docker
+
+Docker is the most important tool in my toolbox. With access to docker I can
+spin up a lightweight development environment, run prebuilt images from docker hub,
+run a headless browser, diff a container after running a process to see while files
+have changed and even `rm -rf` without fear. Once software has been built in Docker,
+it can then be run on many platforms including in a container orchestration platform
+for production. I store all state in Dockerfile or mounted volumes, so I can regularly
+clean up with `docker rm -f $(docker ps -a -q)`.
+
+## Kubernetes
+
+Deploying to EKS or GKE costs money. For local development there are a number of 
+options. I use `k3d` as the only requirement is a docker environment and at the
+time of write, `kind` doesn't play nicely with ARM [devices](https://github.com/rancher-sandbox/rancher-desktop/issues/5092).
+
+```
 function demo_k3d {
-exit
   k3d cluster create -p "8080:80@loadbalancer"
 
   # Useful for overwriting current kube config:
@@ -96,37 +143,50 @@ exit
   while ! curl -f localhost:8080/; do sleep 2; done
 
 }
+```
+
+## Asciinema
+
+Recording terminal sessions can be a little bit painful. When live recording,
+there can be lots of typos and unnecessary pauses. When scripting, `tmux` is often
+used to `send-keys` without human interaction, but given the complexity of waiting for
+long running commands to complete, many people resort to random `sleep 10` commands.
+`sleep`s have their place for allowing a viewer to read the screen, but not when you
+have to estimate how long a command will run for.
+
+Once the recording is complete, you also have to consider how it will be viewed. `script`
+and `scriptreplay` are great locally, but a `gif` or embedded video is often desired
+in a web page for normies to view.
+
+After some experimentation, I found a sweet spot with `expect`, `asciinema` and a local
+`asciinema-player` instead of pushing to their website.
+
+```
 
 function demo_expect_asciinema {
   set -x
   cat << EOF | expect -f -
 set timeout 5
-set send_human {0.1 0.3 1 0.05 1}
-set CTRLC \003
-
 spawn asciinema rec out.cast
 
 expect "~/seandavis.sh/target #"
-send -h "echo Hello, world!"
-sleep 2
+send -h "echo Hello, world!"; sleep 2
 send "\r"
 expect "Hello, World!" -timeout 1
-send -h "vi"
-sleep 2
-send "\r"
-sleep 2
-send -h "ihello"
-sleep 2
-send -h "\x1b"
-sleep 2
-send -h ":q!"
-sleep 2
+
+send -h "vi"; sleep 2
+send "\r"; sleep 2
+
+send -h "ihello"; sleep 2
+send -h "\x1b"; sleep 2
+send -h ":q!"; sleep 2
 send "\r"
 send -h "exit\r\n"
-expect -timeout 1
 
 EOF
 
+# note - when this runs in GitHub Actions, the width and height are 0.
+# We fix this here. 
 while [[ $(cat out.cast | wc -l) -lt 2 ]]; do sleep 2; done
 cat out.cast | tail -n +2 > out.snip
 echo '{"version": 2, "width": 66, "height": 15, "timestamp": 1695663471, "env": {"SHELL": "/bin/ash", "TERM": "xterm-256color"}}' > out.cast
@@ -135,22 +195,19 @@ cat out.snip >> out.cast
 }
 ```
 
-Test text
+<div id="democast"></div>
+<script>AsciinemaPlayer.create('/out.cast', document.getElementById('democast'));</script>
+
+## Busybox
+
+Busybox has a great core set of tools. With minimal POSIX versions of 
+`vi`, `sed`, `awk`, `httpd` and `sh` you can build quite powerful solutions
+for prototyping or deployment on embedded/lightweight devices. Busybox is 
+also _tiny_ and comes as standard in Alpine Linux.
+
+In a few lines, I can build a website:
 
 ```
-function test {
-  echo "test"
-}
-```
-
-# Section 2
-
-Test again
-
-```
-function hello {
-  echo '<html><body><p>Hello World!</p></body></html>' > index.html
-}
 function prototype_busybox_web {
   mkdir -p prototype_busybox_web 
   (cd prototype_busybox_web &&
@@ -160,19 +217,19 @@ function prototype_busybox_web {
 }
 ```
 
-## Images
+## Curl
 
-![](demo_plantuml_seq.png)
+With the rise of APIs in the global consciousness, the HTTP client space has
+exploded. From UI tools like Postman, Insomnia and Paw to CLIs like `httpie` and
+`hurl`, it can be overwhelming to choose. Let's keep it simple and stick to the
+universal HTTP client. It's installed by default on many systems and its creator,
+[Daniel Stenberg](https://daniel.haxx.se/) is a great role model for maintaining
+and open source project.
 
-![](demo_plantuml_component.png)
+## Headless Chrome
 
-![](demo_plantuml_flow.png)
-
-<div id="democast"></div>
-<script>AsciinemaPlayer.create('/out.cast', document.getElementById('democast'));</script>
-
-
-# Headless chrome
+I talked about how great `docker` and `curl` are earlier. Why not install Chrome
+in docker, add `chromedriver` to allow automation via API for web testing?
 
 ```
 function demo_headless_chrome_curl {
@@ -195,3 +252,6 @@ function demo_headless_chrome_curl {
 ```
 
 ![](last-screenshot.png)
+
+# Contact
+
