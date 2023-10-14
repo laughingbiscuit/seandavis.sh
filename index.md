@@ -27,7 +27,6 @@ EOF
   apk update
   apk add git tmux curl busybox-extras pandoc gettext openjdk17 graphviz \
     docker expect asciinema chromium chromium-chromedriver xvfb-run jq
-  apk add kubectl --repository=http://dl-cdn.alpinelinux.org/alpine/v3.18/testing
   apk add kubectl --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
 
 
