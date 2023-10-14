@@ -20,8 +20,8 @@ no ARM support, however I can fallback to SSHing into a remote VM when needed.
 function install_dev_env {
 
   cat << EOF > /etc/apk/repositories
-http://dl-cdn.alpinelinux.org/alpine/edge/main
-http://dl-cdn.alpinelinux.org/alpine/edge/community
+http://dl-cdn.alpinelinux.org/alpine/v3.18/main
+http://dl-cdn.alpinelinux.org/alpine/v3.18/community
 EOF
 
   apk update
