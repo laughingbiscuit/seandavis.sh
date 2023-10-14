@@ -1,3 +1,3 @@
 <img src="bisc.png" alt="LaughingBiscuit" style="width:50%">
 <p><a href="https://github.com/laughingbiscuit/seandavis.sh/actions/workflows/pipeline.yml"><img src="https://github.com/laughingbiscuit/seandavis.sh/actions/workflows/pipeline.yml/badge.svg" alt="Pipeline"></a></p>
-<script src="/asciinema-player.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/asciinema-player@3.6.2/dist/bundle/asciinema-player.min.js"></script>
