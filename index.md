@@ -21,6 +21,7 @@ function install_dev_env {
 
   cat << EOF > /etc/apk/repositories
 http://dl-cdn.alpinelinux.org/alpine/edge/main
+http://dl-cdn.alpinelinux.org/alpine/edge/community
 EOF
 
   apk update
