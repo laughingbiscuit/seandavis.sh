@@ -257,10 +257,14 @@ function demo_pandoc_pdf {
   curl -sSL -o rs-fonts.zip https://github.com/RuneStar/fonts/releases/download/1.103-0/RuneScape-Fonts.zip
   (mkdir -p rs-fonts && cd rs-fonts && unzip ../rs-fonts.zip) 
   cat << EOF > rs.css
-  @font-face {
+@font-face {
   font-family: "Runescape Plain 12";
   src: url(rs-fonts/ttf/RuneScape-Plain-12.ttf);
-  }
+}
+
+* {
+    font-family: "Runescape Plain 12";
+}
 EOF
   cat << EOF | pandoc -s -c rs.css --pdf-engine weasyprint -o sample.html -
 
