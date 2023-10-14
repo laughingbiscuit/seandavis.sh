@@ -118,33 +118,6 @@ it can then be run on many platforms including in a container orchestration plat
 for production. I store all state in Dockerfile or mounted volumes, so I can regularly
 clean up with `docker rm -f $(docker ps -a -q)`.
 
-```
-function demo_blowing_up_docker {
-  cat << EOF | expect -f -
-set timeout 5
-set send_human {0.1 0.3 1 0.05 1}
-spawn asciinema rec blowupdocker.cast
-
-expect "~/seandavis.sh/target #"
-send -h "docker run -it alpine sh"; sleep 2
-send "\r"
-send -h "rm -rf /"; sleep 2
-send "\r"; sleep 1
-send -h "ls\r"; sleep 1
-send -h "pwd\r"; sleep 1
-send -h "echo test\r"; sleep 1
-expect -timeout 5;
-EOF
-
-while [[ $(cat blowupdocker.cast | wc -l) -lt 2 ]]; do sleep 2; done
-cat blowupdocker.cast | tail -n +2 > blowupdocker.snip
-echo '{"version": 2, "width": 66, "height": 15, "timestamp": 1695663471, "env": {"SHELL": "/bin/ash", "TERM": "xterm-256color"}}' > blowupdocker.cast
-cat blowupdocker.snip >> blowupdocker.cast
-}
-```
-<div id="dockercast"></div>
-<script>AsciinemaPlayer.create('/blowupdocker.cast', document.getElementById('dockercast'));</script>
-
 ## Kubernetes
 
 Deploying to EKS or GKE costs money. For local development there are a number of 
@@ -256,12 +229,25 @@ and open source project.
 
 I believe that plain text files are the best way of record, sharing and 
 evolving information - however not everybody likes reading it. By using
-pandoc, I can generate websites (such as this one), word and powerpoint docs.
+pandoc, I can generate websites (such as this one), word, powerpoint and pdf docs.
 
 When generating documents for work, they may need styling to fit brand guidelines.
 I find the latex syntax unintuitative and prefer to use `weasyprint` and `css` to
 easily change fonts, colours and other styles. This requires python which is a bit
 heavy, so I try to avoid the need to style my docs where possible.
+
+```
+function demo_pandoc_pdf {
+  cat << EOF | pandoc -o sample.pdf -
+
+# Hello World
+
+Some text here
+EOF
+}
+```
+
+<object data="sample.pdf" type="application/pdf" width="100%" height="500px">
 
 ## Git
 
