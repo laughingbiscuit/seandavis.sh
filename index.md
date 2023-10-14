@@ -25,9 +25,10 @@ http://dl-cdn.alpinelinux.org/alpine/v3.18/community
 EOF
 
   apk update
-  apk add libdav1d
   apk add git tmux curl busybox-extras pandoc gettext openjdk17 graphviz \
-    kubectl docker expect asciinema chromium chromium-chromedriver xvfb-run jq
+    docker expect asciinema chromium chromium-chromedriver xvfb-run jq
+  apk add kubectl --repository=http://dl-cdn.alpinelinux.org/alpine/v3.18/testing
+  apk add kubectl --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
 
 
   curl -sSL \
