@@ -260,8 +260,7 @@ Some text here
 EOF
 }
 ```
-<iframe src="https://docs.google.com/gview?url=sample.pdf&embedded=true" width="100%" height="20%"></iframe>
-<!--<iframe src="https://view.officeapps.live.com/op/embed.aspx?src=' width='100%' height='900px' frameborder='0'>This is an embedded <a target='_blank' href='http://office.com'>Microsoft Office</a> document, powered by <a target='_blank' href='http://office.com/webapps'>Office Online</a>.</iframe>-->
+<iframe src="https://view.officeapps.live.com/op/embed.aspx?src=https://seandavis.sh/sample.pdf' width='100%' height='900px' frameborder='0'>This is an embedded <a target='_blank' href='http://office.com'>Microsoft Office</a> document, powered by <a target='_blank' href='http://office.com/webapps'>Office Online</a>.</iframe>
 
 ## Git
 
