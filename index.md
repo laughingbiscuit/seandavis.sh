@@ -188,12 +188,28 @@ send "\r"
 send -h "exit\r\n"
 
 EOF
-
 }
 ```
 
 <div id="democast"></div>
 <script>AsciinemaPlayer.create('/out.cast', document.getElementById('democast'));</script>
+
+```
+function demo_simple_rec {
+  cat << EOF | expect -f -
+set timeout 5
+set send_human {0.1 0.3 1 0.05 1}
+spawn asciinema rec --cols 60 --rows 15 simple.cast
+expect "~/seandavis.sh/target #"
+send -h "sh index.sh install_dev_env"; sleep 2
+send "\r"
+expect "~/seandavis.sh/target #"
+
+EOF
+}
+```
+<div id="simplecast"></div>
+<script>AsciinemaPlayer.create('/simple.cast', document.getElementById('simplecast'));</script>
 
 ## Busybox
 
