@@ -143,7 +143,7 @@ function demo_k3d {
   kubectl create deployment nginx --image=my-nginx:0.1
   kubectl create service clusterip nginx --tcp=80:80
   kubectl create ingress nginx --rule="/=nginx:80" 
-  timeout 10 sh -c "while ! curl -f localhost:8080/; do sleep 2; done"
+  timeout 30 sh -c "while ! curl -f localhost:8080/; do sleep 2; done"
 
 }
 ```
