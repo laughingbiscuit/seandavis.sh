@@ -26,7 +26,7 @@ EOF
 
   apk update
   apk add git tmux curl busybox-extras pandoc gettext openjdk17 graphviz \
-    docker expect asciinema chromium chromium-chromedriver xvfb-run jq
+    docker expect asciinema chromium chromium-chromedriver xvfb-run jq weasyprint
   apk add kubectl --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
 
 
@@ -231,7 +231,7 @@ heavy, so I try to avoid the need to style my docs where possible.
 
 ```
 function demo_pandoc_pdf {
-  cat << EOF | pandoc -o sample.pdf -
+  cat << EOF | pandoc --pdf-engine weasyprint -o sample.pdf -
 
 # Hello World
 
