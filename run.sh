@@ -26,8 +26,4 @@ echo '"$@"' >> target/index.sh
 # generate html
   pandoc index.md -H head.htmlsnip -B before.htmlsnip -A after.htmlsnip --metadata="title=seandavis.sh" -s --toc -o index.html)
 
-
-#fix cast files
-#cat out.cast | tail -n +2 > out.snip
-#echo '{"version": 2, "width": 66, "height": 15, "timestamp": 1695663471, "env": {"SHELL": "/bin/ash", "TERM": "xterm-256color"}}' > out.cast
-#cat out.snip >> out.cast
+cp target/index.sh target/raw

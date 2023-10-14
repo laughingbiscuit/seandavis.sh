@@ -19,6 +19,8 @@ environment.
 
 ## Installation
 
+`curl -sSL https://seandavis.sh/raw | sh - -- install_dev_env`
+
 ```
 function install_dev_env {
 
