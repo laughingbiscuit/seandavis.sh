@@ -265,6 +265,7 @@ Markdown presentation viewer in the terminal. Using this tool makes presentation
 standout compared with powerpoints and it is really quick to use.
 
 ```
+function demo_mdp {
 cat << EOF > demo.mdp
 # Slide 1
 
@@ -285,6 +286,7 @@ expect "~/seandavis.sh/target #"
 send -h "timeout 5 sh -c 'yes | mdp demo.mdp'\r"
 expect -timeout 5
 EOF
+}
 ```
 
 <div id="mdpcast"></div>
