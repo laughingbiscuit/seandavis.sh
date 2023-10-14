@@ -345,5 +345,15 @@ function euler_1 {
 }
 ```
 
+Problem 2
+
+```
+function euler_2 {
+  curl -sSL -o fib.txt https://raw.githubusercontent.com/yousefvand/fibonacci/master/sequence.txt
+  sed -i 's/^1, //' fib.txt  
+  cat fib.txt | tr ',' '\n' | awk '{ if ($0 < 4000000 && $0 % 2 == 0) {sum+=$0}} END {print sum}'
+}
+```
+
 # Contact
 
