@@ -18,7 +18,10 @@ echo '"$@"' >> target/index.sh
 
 # run all functions in shell script
 (cd target/ &&
-  cat index.sh | grep -e "^function" | sed 's/function //' | sed 's/{//' | xargs -P1 -I{} sh -xe -c "sh -xe index.sh {}"
+  FUNCTIONS=$(cat index.sh | grep -e "^function" | sed 's/function //' | sed 's/{//')
+  for FUN in $FUNCTIONS; do
+    sh -xe $FUN
+  done
 
 # generate html
   pandoc index.md -H head.htmlsnip -B before.htmlsnip -A after.htmlsnip --metadata="title=seandavis.sh" -s --toc -o index.html)
