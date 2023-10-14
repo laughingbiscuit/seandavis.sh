@@ -135,6 +135,11 @@ send -h "pwd\r"; sleep 1
 send -h "echo test\r"; sleep 1
 expect -timeout 5;
 EOF
+
+while [[ $(cat blowupdocker.cast | wc -l) -lt 2 ]]; do sleep 2; done
+cat blowupdocker.cast | tail -n +2 > blowupdocker.snip
+echo '{"version": 2, "width": 66, "height": 15, "timestamp": 1695663471, "env": {"SHELL": "/bin/ash", "TERM": "xterm-256color"}}' > blowupdocker.cast
+cat blowupdocker.snip >> blowupdocker.cast
 }
 ```
 <div id="dockercast"></div>
@@ -246,6 +251,21 @@ exploded. From UI tools like Postman, Insomnia and Paw to CLIs like `httpie` and
 universal HTTP client. It's installed by default on many systems and its creator,
 [Daniel Stenberg](https://daniel.haxx.se/) is a great role model for maintaining
 and open source project.
+
+## Pandoc
+
+I believe that plain text files are the best way of record, sharing and 
+evolving information - however not everybody likes reading it. By using
+pandoc, I can generate websites (such as this one), word and powerpoint docs.
+
+When generating documents for work, they may need styling to fit brand guidelines.
+I find the latex syntax unintuitative and prefer to use `weasyprint` and `css` to
+easily change fonts, colours and other styles. This requires python which is a bit
+heavy, so I try to avoid the need to style my docs where possible.
+
+## Git
+
+Needs no explanation.
 
 ## Headless Chrome
 
