@@ -270,7 +270,7 @@ function demo_pandoc_pdf {
     font-family: "Runescape Plain 12";
 }
 h1 {
-  color: yellow;
+  color: red;
 }
 
 EOF
