@@ -266,13 +266,13 @@ function demo_pandoc_pdf {
     font-family: "Runescape Plain 12";
 }
 EOF
-  cat << EOF | pandoc -s -c rs.css --pdf-engine weasyprint -o sample.html -
+  cat << EOF | pandoc -s -c rs.css --pdf-engine weasyprint -o sample.html
 
 # Hello World
 
 Some text here
 EOF
-  pandoc --pdf-engine weasyprint sample.html -o sample.pdf
+  pandoc -s -c rs.css --pdf-engine weasyprint sample.html -o sample.pdf
 }
 ```
 
