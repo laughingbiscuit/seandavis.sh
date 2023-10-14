@@ -262,7 +262,7 @@ function demo_pandoc_pdf {
   src: url(rs-fonts/ttf/RuneScape-Plain-12.ttf);
   }
   EOF
-  cat << EOF | pandoc -s rs.css --pdf-engine weasyprint -o sample.html -
+  cat << EOF | pandoc -c rs.css --pdf-engine weasyprint -o sample.html -
 
 # Hello World
 
