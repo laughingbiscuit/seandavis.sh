@@ -305,6 +305,8 @@ set send_human {0.1 0.3 1 0.05 1}
 spawn asciinema rec --cols 60 --rows 15 mdp.cast
 
 expect "~/seandavis.sh/target #"
+send -h "TERM=xterm\r"
+sleep 1
 send -h "tmux\r"
 expect "~/seandavis.sh/target #"
 send -h "yes | mdp demo.mdp\r"
