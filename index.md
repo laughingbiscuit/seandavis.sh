@@ -118,6 +118,27 @@ it can then be run on many platforms including in a container orchestration plat
 for production. I store all state in Dockerfile or mounted volumes, so I can regularly
 clean up with `docker rm -f $(docker ps -a -q)`.
 
+```
+function demo_blowing_up_docker {
+  cat << EOF | expect -f -
+set timeout 5
+set send_human {0.1 0.3 1 0.05 1}
+spawn asciinema rec blowupdocker.cast
+
+expect "~/seandavis.sh/target #"
+send -h "docker run -it alpine sh"; sleep 2
+send "\r"
+send -h "rm -rf"; sleep 2
+send "\r"; sleep 1
+send -h "ls\r"; sleep 1
+send -h "pwd\r"; sleep 1
+send -h "echo test\r"; sleep 1
+expect -timeout 5;
+}
+```
+<div id="dockercast"></div>
+<script>AsciinemaPlayer.create('/blowupdocker.cast', document.getElementById('dockercast'));</script>
+
 ## Kubernetes
 
 Deploying to EKS or GKE costs money. For local development there are a number of 
@@ -163,7 +184,6 @@ After some experimentation, I found a sweet spot with `expect`, `asciinema` and 
 ```
 
 function demo_expect_asciinema {
-  set -x
   cat << EOF | expect -f -
 set timeout 5
 set send_human {0.1 0.3 1 0.05 1}
