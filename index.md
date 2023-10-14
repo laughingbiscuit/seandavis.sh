@@ -262,7 +262,7 @@ EOF
 }
 ```
 
-For best results, I convert to HTML before PDF. You can see the results here for [html](sample.html) and [pdf](html).
+<iframe id="pdf-js-viewer" src="/web/viewer.html?file=%2sample.pdf" title="webviewer" frameborder="0" width="100%" height="600"></iframe>
 
 ## Git
 
