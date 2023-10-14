@@ -320,5 +320,26 @@ function demo_headless_chrome_curl {
 
 ![](last-screenshot.png)
 
+# Sample Project
+
+## Brief
+
+A small pizzeria serves two local villages. Following the Napoli tradition, they have a simple menu:
+
+- Marinara
+- Margherita
+
+This sample project will help them with a digital transformation.
+
+# Programming Challenges
+
+## Project Euler
+
+Problem 1
+
+```
+seq 999 | awk '{ if ($0 % 3 == 0 || $0 % 5 == 0) { sum+=$0}} END { print sum }'
+```
+
 # Contact
 
