@@ -338,7 +338,9 @@ This sample project will help them with a digital transformation.
 Problem 1
 
 ```
-seq 999 | awk '{ if ($0 % 3 == 0 || $0 % 5 == 0) { sum+=$0}} END { print sum }'
+function euler_1 {
+  seq 999 | awk '{ if ($0 % 3 == 0 || $0 % 5 == 0) { sum+=$0}} END { print sum }'
+}
 ```
 
 # Contact
