@@ -128,12 +128,13 @@ spawn asciinema rec blowupdocker.cast
 expect "~/seandavis.sh/target #"
 send -h "docker run -it alpine sh"; sleep 2
 send "\r"
-send -h "rm -rf"; sleep 2
+send -h "rm -rf /"; sleep 2
 send "\r"; sleep 1
 send -h "ls\r"; sleep 1
 send -h "pwd\r"; sleep 1
 send -h "echo test\r"; sleep 1
 expect -timeout 5;
+EOF
 }
 ```
 <div id="dockercast"></div>
