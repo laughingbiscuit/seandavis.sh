@@ -355,5 +355,13 @@ function euler_2 {
 }
 ```
 
+Problem 3
+
+```
+function euler_3 {
+  factor 600851475143 | sed 's/.* \(.*\)$/\1/'
+}
+```
+
 # Contact
 
