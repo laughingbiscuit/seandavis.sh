@@ -244,7 +244,7 @@ Some text here
 EOF
 }
 ```
-<iframe src="https://docs.google.com/gview?url=https://seandavis.sh/sample.pdf&embedded=true" width="100%"></iframe>
+<iframe src="https://docs.google.com/gview?url=https://seandavis.sh/sample.pdf&embedded=true" width="100%" height="20%"></iframe>
 
 ## Git
 
@@ -288,7 +288,7 @@ set send_human {0.1 0.3 1 0.05 1}
 spawn asciinema rec --cols 60 --rows 15 mdp.cast
 
 expect "~/seandavis.sh/target #"
-send -h "timeout 5 sh -c 'yes | mdp demo.mdp'\r"
+send -h "timeout 5 sh -c 'yes | TERM=xterm mdp demo.mdp'\r"
 expect -timeout 5
 EOF
 }
