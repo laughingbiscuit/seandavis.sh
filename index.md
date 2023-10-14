@@ -239,7 +239,7 @@ Some text here
 EOF
 }
 ```
-<iframe src="https://docs.google.com/gview?url=https://seandavis.sh/sample.pdf&embedded=true"></iframe>
+<iframe src="https://docs.google.com/gview?url=https://seandavis.sh/sample.pdf&embedded=true" width="100%"></iframe>
 
 ## Git
 
