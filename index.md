@@ -258,7 +258,7 @@ function demo_pandoc_pdf {
   (mkdir -p rs-fonts && cd rs-fonts && unzip ../rs-fonts.zip) 
   cat << EOF > rs.css
   @font-face {
-  font-family: p12_full;
+  font-family: "Runescape Plain 12";
   src: url(rs-fonts/ttf/RuneScape-Plain-12.ttf);
   }
 EOF
