@@ -14,6 +14,9 @@ muslibc's lack of DNS over TCP, however this is resolved in newer versions.
 I occasionally need to make exceptions when using tools that require glibc or have
 no ARM support, however I can fallback to SSHing into a remote VM when needed.
 
+Full applications run in Docker, K8s or a SaaS so are not included in my development 
+environment.
+
 ## Installation
 
 ```
@@ -159,7 +162,8 @@ and `scriptreplay` are great locally, but a `gif` or embedded video is often des
 in a web page for normies to view.
 
 After some experimentation, I found a sweet spot with `expect`, `asciinema` and a local
-`asciinema-player` instead of pushing to their website.
+`asciinema-player` instead of pushing to their website. Thanks for the inspiration 
+[Waleed](https://blog.waleedkhan.name/automating-terminal-demos/).
 
 ```
 
@@ -297,6 +301,9 @@ EOF
 
 I talked about how great `docker` and `curl` are earlier. Why not install Chrome
 in docker, add `chromedriver` to allow automation via API for web testing?
+
+I am inspired by [Shellnium](https://github.com/Rasukarusan/shellnium), but want to 
+use busybox POSIX `sh` instead of `bash`.
 
 ```
 function demo_headless_chrome_curl {
