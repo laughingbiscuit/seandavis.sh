@@ -20,7 +20,7 @@ echo '"$@"' >> target/index.sh
 (cd target/ &&
   FUNCTIONS=$(cat index.sh | grep -e "^function" | sed 's/function //' | sed 's/{//')
   for FUN in $FUNCTIONS; do
-    sh -xe $FUN
+    sh -xe index.sh $FUN
   done
 
 # generate html
