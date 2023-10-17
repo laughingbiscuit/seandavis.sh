@@ -355,6 +355,7 @@ A small pizzeria serves two local villages. Following the Napoli tradition, they
 
 This sample project will help them with a digital transformation.
 
+
 ```
 function gen_hlsa {
   cat << EOF | java -jar /opt/plantuml.jar -p > hlsa.png
@@ -368,6 +369,8 @@ u-d->pp
 EOF
 }
 ```
+
+![](hlsa.png)
 
 # Programming Challenges
 
