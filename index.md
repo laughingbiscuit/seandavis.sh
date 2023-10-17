@@ -1,3 +1,5 @@
+This is my notepad.
+
 # Development Environment
 
 I like to keep things simple. I strive to develop expertise in a small number
@@ -371,6 +373,9 @@ EOF
 
 ## Project Euler
 
+Where possible, I solve these with busybox only. For more complex
+performance requirements, I choose a more suitable tool.
+
 Problem 1
 
 ```
@@ -397,5 +402,33 @@ function euler_3 {
 }
 ```
 
-# Contact
+Problem 4
 
+```
+function euler_4 {
+  echo 3 | awk 'BEGIN{ 
+    max = (10 ^ $0)
+    highest = 0
+    for (i = 1; i < max; i++) {
+      for (j = 1; j < max; j++) {
+        # calculate product
+        product = i*j
+
+        # reverse string
+        rev=""
+        for(k=length(product);k!=0;k--) {
+          rev=(rev substr(product,k,1))
+        }
+
+        # store highest
+        if(product == rev && product > highest) {
+          highest = product
+        }
+      }
+    }
+    print highest
+  }'
+}
+```
+
+# Contact
