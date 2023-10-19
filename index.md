@@ -362,9 +362,28 @@ function gen_hlsa {
 @startuml
 actor Customer as c
 rectangle PerfectPizza as pp {
-
+  rectangle MobileApp as app
+  rectangle CDN as cdn
+  rectangle WebApp as web
+  rectangle "API GW/Ingress" as api
+  rectangle "Service Mesh/Network" sm {
+    rectangle "Microsvcs (HTTP/Streaming)" as u
+    rectangle "IDP" as idp
+    database "Persistence" as db
+  }
+  rectangle "Ops Tooling" as ops
 }
-u-d->pp
+
+c-d->pp
+c-d->app
+c-d->cdn
+cdn-d->web
+app-d->cdn
+cdn-d->api
+api-d->sm
+u-d->db
+idp-d->db
+
 @enduml
 EOF
 }
