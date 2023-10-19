@@ -356,9 +356,8 @@ A small pizzeria serves two local villages. Following the Napoli tradition, they
 This sample project will help them with a digital transformation.
 
 
-```
+```debug
 function gen_hlsa {
-  set +e
   cat << EOF | java -jar /opt/plantuml.jar -p > hlsa.png
 @startuml
 actor Customer as c
@@ -367,28 +366,27 @@ rectangle PerfectPizza as pp {
   rectangle CDN as cdn
   rectangle WebApp as web
   rectangle "API GW/Ingress" as api
-  rectangle "Service Mesh/Network" sm {
+  rectangle "Service Mesh/Network" as sm {
     rectangle "Microsvcs (HTTP/Streaming)" as u
     rectangle "IDP" as idp
     database "Persistence" as db
   }
-  rectangle "Ops Tooling" as ops
 }
+rectangle "Ops Tooling" as ops
 
-c-d->pp
 c-d->app
 c-d->cdn
 cdn-d->web
 app-d->cdn
 cdn-d->api
+web-d->api
 api-d->sm
 u-d->db
 idp-d->db
+ops->pp
 
 @enduml
 EOF
-
-  set -e
 }
 ```
 
