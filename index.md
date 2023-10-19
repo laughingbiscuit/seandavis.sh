@@ -370,14 +370,11 @@ rectangle PerfectPizza as pp {
       rectangle app as a
       database db as d
     }
-    rectangle "Microsvc B (HTTP/Streaming)" as u2 {
+    rectangle "Microsvc ... (HTTP/Streaming)" as u2 {
       rectangle app as a2
       database db as d2
     }
-    rectangle "Microsvc ... (HTTP/Streaming)" as u3 {
-      rectangle app as a3
-      database db as d3
-    }
+    note right of u2: uSvcs for business logic, identity providers, payment providers, etc...
   }
 }
 rectangle "Ops Tooling" as ops
@@ -390,7 +387,7 @@ api-d->sm
 ops->pp
 a-d->d
 a2-d->d2
-a3-d->d3
+a-[hidden]r->a2
 
 @enduml
 EOF
