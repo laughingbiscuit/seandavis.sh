@@ -358,6 +358,7 @@ This sample project will help them with a digital transformation.
 
 ```
 function gen_hlsa {
+  set +e
   cat << EOF | java -jar /opt/plantuml.jar -p > hlsa.png
 @startuml
 actor Customer as c
@@ -386,6 +387,8 @@ idp-d->db
 
 @enduml
 EOF
+
+  set -e
 }
 ```
 
