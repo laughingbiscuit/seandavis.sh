@@ -366,9 +366,18 @@ rectangle PerfectPizza as pp {
   rectangle ProgressiveWebApp as web
   rectangle "API GW/Ingress" as api
   rectangle "Service Mesh/Network" as sm {
-    rectangle "Microsvcs (HTTP/Streaming)" as u
-    rectangle "IDP" as idp
-    database "Persistence" as db
+    rectangle "Microsvc A (HTTP/Streaming)" as u {
+      rectangle app as a
+      database db as d
+    }
+    rectangle "Microsvc B (HTTP/Streaming)" as u2 {
+      rectangle app as a2
+      database db as d2
+    }
+    rectangle "Microsvc ... (HTTP/Streaming)" as u3 {
+      rectangle app as a3
+      database db as d3
+    }
   }
 }
 rectangle "Ops Tooling" as ops
@@ -378,9 +387,10 @@ cdn-d->web
 cdn-d->api
 web-d->api
 api-d->sm
-u-d->db
-idp-d->db
 ops->pp
+a-d->d
+a2-d->d2
+a3-d->d3
 
 @enduml
 EOF
