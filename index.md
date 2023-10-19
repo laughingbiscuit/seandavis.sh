@@ -380,7 +380,7 @@ cdn-d->web
 cdn-d->api
 web-d->api
 api-d->sm
-ops-r->pp
+ops->pp
 a-d->d
 
 @enduml
