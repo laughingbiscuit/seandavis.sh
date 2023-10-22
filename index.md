@@ -489,18 +489,21 @@ So I will unlock:
 
 Quest order and guide:
 
-
 - [make sure authenticator is set]
+- chronicle
 - Apron from Port Sarim
 - 10k coins
 - Chefs hat
 - Cooks assistant
 - Sheep shearer
 - Misthalin Mystery
+- draman staff
+- 12 WC for canoe
 
 (in progress - check items and which are autocompleted of the below)
 
 - Tasks to unlock Kandarin for another cooks
+- ardy cloak
 - fishing contest
 - Saving pirate pete (combat 5x lvl 35 monsters)
 - big chompy bird hunting
@@ -516,11 +519,12 @@ Quest order and guide:
 - Murder Mystery
 - Witch's House
 - lumby guide
+- tears of guthix minigame
 
 - Tasks to unlock third region (TODO: theorycraft all three)
 - remaining RFD quests
 
-- end game PVM and BIS unlocks
+- max, end game PVM and BIS unlocks
 
 # Contact
 
