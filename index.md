@@ -452,4 +452,80 @@ function euler_4 {
 }
 ```
 
+# OSRS Leagues 4 Theorycrafting
+
+With [this](https://www.reddit.com/r/2007scape/comments/j7i4te/trailblazer_league_an_extensive_overview_of_every/?rdt=37070) and OSRS wiki.
+
+- Ironman
+- Chef-only
+  - RFD Melee Weapons
+  - Ranged throwing knives (poison?)
+  - kitchen knife/egg whisk have +1 magic, but ill use battlestaves for autocast
+  - chefs hat
+  - apron
+- BIS: Chef hat, fire cape, amulet, blessing, cleaver, apron, cabbage shield, dragon legs, dragon boots, b ring, b gloves
+  - d knives (p++), battlestaff
+- Quests:
+  - Cooks Assistant - Misthalin
+  - Another Cooks - Kandarin OR Mory (autocomplete)
+  - Mtn Dwarf - Asgarnia/Kandarin
+  - Goblin Gen - Asg + Kan OR Mory
+  - Pirate Pete - Kan OR Mory (auto)
+  - Lumby Guide - Asg + Kan
+  - Evil Dave - desert + kan OR mory
+  - Scrach Uglogwee - kan
+  - Sir Amik Varze - asg, frem + kan OR mory
+  - King Awowogei - kan auto
+  - Culinaromancer - IMPOSSIBLE
+
+So I will unlock:
+
+- Asgarnia
+- Kandarin
+- Depending on how its going, either...
+  - Fremmy (Vork, DKs)
+  - Desert (KQ, ToA)
+  - Mory (Barrows, ToB)
+
+Quest order and guide:
+
+
+- [make sure authenticator is set]
+- Apron from Port Sarim
+- 10k coins
+- Chefs hat
+- Cooks assistant
+- Sheep shearer
+- Misthalin Mystery
+
+(in progress - check items and which are autocompleted of the below)
+
+- Tasks to unlock Kandarin for another cooks
+- fishing contest
+- Saving pirate pete (combat 5x lvl 35 monsters)
+- big chompy bird hunting
+- scrach uglogwee  
+
+- Tasks to unlock asg
+- mtg dwarf
+- goblin diplomacy
+- goblin gen
+- Biohazard
+  - Plague City
+- Demon Slayer
+- Murder Mystery
+- Witch's House
+- lumby guide
+
+- Tasks to unlock third region (TODO: theorycraft all three)
+- remaining RFD quests
+
+- end game PVM and BIS unlocks
+
 # Contact
+
+
+
+
+
+
