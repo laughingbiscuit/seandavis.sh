@@ -373,14 +373,16 @@ rectangle PerfectPizza as pp {
     note right of u: uSvcs for business logic, identity providers, payment providers, etc...
   }
 }
-rectangle "Ops Tooling" as ops
+rectangle "Ops Tooling" as ops {
+  rectangle "Logging"
+  rectangle "Monitoring"
+}
 
 c-d->cdn
 cdn-d->web
 cdn-d->api
 web-d->api
 api-d->sm
-ops->pp
 a-d->d
 
 @enduml
