@@ -231,7 +231,38 @@ function prototype_busybox_web {
     echo '<html><body><p>Hello World!</p></body></html>' > index.html &&
     httpd -p 8081 -h .
     while ! curl -f http://localhost:8081/; do sleep 1; done)
+  pkill httpd
 }
+```
+
+I can also build a (very limited) API:
+
+```
+function prototype_busybox_api {
+  mkdir -p prototype_busybox_api
+  (cd prototype_busybox_api &&
+    mkdir -p cgi-bin 
+    cat << EOF > cgi-bin/ping
+#!/bin/sh
+
+echo "Content-Type: text/plain"
+echo ""
+echo "PONG!"
+echo ""
+POST_DATA="$(cat)"
+echo "POST_DATA=$POST_DATA"
+echo "QUERY_STRING=$QUERY_STRING"
+echo "REQUEST_METHOD=$REQUEST_METHOD"
+printenv | grep '^HTTP'
+
+EOF
+    chmod +x cgi-bin/ping
+    httpd -p 8081 -h .
+    while ! curl -f http://localhost:8081/cgi-bin/ping; do sleep 1; done)
+  )
+  pkill httpd
+}
+
 ```
 
 ## Curl
