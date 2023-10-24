@@ -258,7 +258,7 @@ printenv | grep '^HTTP'
 EOF
     chmod +x cgi-bin/ping
     httpd -p 8081 -h .
-    while ! curl -f http://localhost:8081/cgi-bin/ping; do sleep 1; done)
+    while ! curl -f http://localhost:8081/cgi-bin/ping; do sleep 1; done
   )
   pkill httpd
 }
