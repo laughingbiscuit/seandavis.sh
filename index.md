@@ -288,7 +288,6 @@ POST_DATA="$(cat)"
 # firstly, make sure the db exists
 touch db.csv
 
-echo "debug: $REQUEST_METHOD:$PATH_INFO"
 
 # CREATE
 if [ "$REQUEST_METHOD" = "POST" ] && [ ! $PATH_INFO ]; then
@@ -335,6 +334,7 @@ else
   echo "HTTP/1.1 400 Bad Request"
   echo "Content-Type: text/plain"
   echo ""
+  echo "debug: $REQUEST_METHOD:$PATH_INFO"
   echo "Not supported"
 fi
 EOF
