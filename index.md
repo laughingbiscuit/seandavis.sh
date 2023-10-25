@@ -253,12 +253,96 @@ POST_DATA="$(cat)"
 echo "POST_DATA=$POST_DATA"
 echo "QUERY_STRING=$QUERY_STRING"
 echo "REQUEST_METHOD=$REQUEST_METHOD"
+echo "PATH_INFO=$PATH_INFO"
 printenv | grep '^HTTP'
 
 EOF
     chmod +x cgi-bin/ping
     httpd -p 8081 -h .
     while ! curl -f http://localhost:8081/cgi-bin/ping; do sleep 1; done
+  )
+  pkill httpd
+}
+
+```
+
+Lets do the same for a database with an API interface that writes to a CSV file.
+
+```
+function prototype_busybox_db {
+  mkdir -p prototype_busybox_db
+  (cd prototype_busybox_db &&
+    mkdir -p cgi-bin 
+    cat << EOF > cgi-bin/db
+#!/bin/sh
+
+###
+# A dummy CSV flat file DB, accessed via API
+#   using busybox only. No validation. Uses timestamps as ids.
+#   Doesn't set content-length so requires the HTTP client to close
+#   the connection. No API security.
+###
+
+POST_DATA="$(cat)"
+
+# firstly, make sure the db exists
+touch db.csv
+
+# CREATE
+if [ "$REQUEST_METHOD" = "POST" ] && [ ! $PATH_INFO ]; then
+  echo "HTTP/1.1 201 Created"
+  echo "Content-Type: text/plain"
+  echo ""
+  ID=$(date +%s%3N)
+  echo "$ID,$POST_DATA" >> db.csv
+  awk "/^$ID,/{ print \$0 }" db.csv
+# READ ALL
+elif [ "$REQUEST_METHOD" = "GET" ] && [ ! $PATH_INFO ]; then
+  echo "Content-Type: text/plain"
+  echo ""
+  cat db.csv
+# READ ONE
+elif [ "$REQUEST_METHOD" = "GET" ] && [ $PATH_INFO ]; then
+  echo "Content-Type: text/plain"
+  echo ""
+  ID=$(echo "$PATH_INFO" | sed 's/\/\(.*\)/\1/')
+  echo "debug:$ID"
+  awk "/^$ID/{ print \$0 }" db.csv
+# UPDATE ONE
+elif [ "$REQUEST_METHOD" = "PUT" ] && [ $PATH_INFO ]; then
+  echo "Content-Type: text/plain"
+  echo ""
+  ID=$(echo "$PATH_INFO" | sed 's/\/\(.*\)/\1/')
+  sed -i "/^$ID/d" db.csv
+  echo "$ID,$POST_DATA" >> db.csv
+  awk "/^$ID/{ print \$0 }" db.csv
+# DELETE ALL
+elif [ "$REQUEST_METHOD" = "DELETE" ] && [ ! $PATH_INFO ]; then
+  echo "HTTP/1.1 204 No Content"
+  echo "Content-Type: text/plain"
+  echo ""
+  rm db.csv
+# DELETE ONE
+elif [ "$REQUEST_METHOD" = "DELETE" ] && [ $PATH_INFO ]; then
+  echo "HTTP/1.1 204 No Content"
+  echo "Content-Type: text/plain"
+  echo ""
+  ID=$(echo "$PATH_INFO" | sed 's/\/\(.*\)/\1/')
+  sed -i "/^$ID/d" db.csv
+else
+  echo "HTTP/1.1 400 Bad Request"
+  echo "Content-Type: text/plain"
+  echo ""
+  echo "Not supported"
+  exit 400
+fi
+EOF
+    chmod +x cgi-bin/db
+    httpd -p 8081 -h .
+    while ! curl -f http://localhost:8081/cgi-bin/db; do sleep 1; done
+    curl -f http://localhost:8081/cgi-bin/db
+    curl -f http://localhost:8081/cgi-bin/db -d 'Sean, 31'
+    curl -f http://localhost:8081/cgi-bin/db -XDELETE 
   )
   pkill httpd
 }
