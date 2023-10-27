@@ -26,7 +26,7 @@ environment.
 ```
 function install_dev_env {
 
-  cat << EOF > /etc/apk/repositories
+  cat << 'EOF' > /etc/apk/repositories
 http://dl-cdn.alpinelinux.org/alpine/v3.18/main
 http://dl-cdn.alpinelinux.org/alpine/v3.18/community
 EOF
@@ -66,7 +66,7 @@ For anything else, I will create a plaintext file in `vi`.
 
 ```
 function demo_plantuml_seq {
-  cat << EOF | java -jar /opt/plantuml.jar -p > demo_plantuml_seq.png
+  cat << 'EOF' | java -jar /opt/plantuml.jar -p > demo_plantuml_seq.png
 
 @startuml
 a->b: GET /
@@ -80,7 +80,7 @@ EOF
 
 ```
 function demo_plantuml_component {
-  cat << EOF | java -jar /opt/plantuml.jar -p > demo_plantuml_component.png
+  cat << 'EOF' | java -jar /opt/plantuml.jar -p > demo_plantuml_component.png
 
 @startuml
 cloud GCP {
@@ -98,7 +98,7 @@ EOF
 
 ```
 function demo_plantuml_flow {
-  cat << EOF | java -jar /opt/plantuml.jar -p > demo_plantuml_flow.png
+  cat << 'EOF' | java -jar /opt/plantuml.jar -p > demo_plantuml_flow.png
 
 @startuml
 :step one;
@@ -172,7 +172,7 @@ After some experimentation, I found a sweet spot with `expect`, `asciinema` and 
 ```
 
 function demo_expect_asciinema {
-  cat << EOF | expect -f -
+  cat << 'EOF' | expect -f -
 set timeout 5
 set send_human {0.1 0.3 1 0.05 1}
 spawn asciinema rec --cols 60 --rows 15 out.cast
@@ -200,7 +200,7 @@ EOF
 
 ```
 function demo_simple_rec {
-  cat << EOF | expect -f -
+  cat << 'EOF' | expect -f -
 set timeout 5
 set send_human {0.1 0.3 1 0.05 1}
 spawn asciinema rec --cols 60 --rows 15 simple.cast
@@ -242,7 +242,7 @@ function prototype_busybox_api {
   mkdir -p prototype_busybox_api
   (cd prototype_busybox_api &&
     mkdir -p cgi-bin 
-    cat << EOF > cgi-bin/ping
+    cat << 'EOF' > cgi-bin/ping
 #!/bin/sh
 
 echo "Content-Type: text/plain"
@@ -273,7 +273,7 @@ function prototype_busybox_db {
   mkdir -p prototype_busybox_db
   (cd prototype_busybox_db &&
     mkdir -p cgi-bin 
-    cat << EOF > cgi-bin/db
+    cat << 'EOF' > cgi-bin/db
 #!/bin/sh
 
 ###
@@ -374,7 +374,7 @@ heavy, so I try to avoid the need to style my docs where possible.
 function demo_pandoc_pdf {
   curl -sSL -o rs-fonts.zip https://github.com/RuneStar/fonts/releases/download/1.103-0/RuneScape-Fonts.zip
   (mkdir -p rs-fonts && cd rs-fonts && unzip ../rs-fonts.zip) 
-  cat << EOF > rs.css
+  cat << 'EOF' > rs.css
 @font-face {
   font-family: "Runescape Plain 12";
   src: url(rs-fonts/ttf/RuneScape-Plain-12.ttf);
@@ -392,7 +392,7 @@ h1 {
 }
 
 EOF
-  cat << EOF | pandoc --metadata title="" -s -c rs.css --pdf-engine weasyprint -o sample.html
+  cat << 'EOF' | pandoc --metadata title="" -s -c rs.css --pdf-engine weasyprint -o sample.html
 
 # Hello World
 
@@ -414,7 +414,7 @@ Tabs in the terminal. Set a nice colour scheme and title using:
 
 ```
 function style_tmux {
-  cat << EOF > $HOME/.tmux.conf
+  cat << 'EOF' > $HOME/.tmux.conf
 set -g status-bg red
 set -g status-right Ferrari
 set -g status-left ""
@@ -474,7 +474,7 @@ This sample project will help them with a digital transformation.
 
 ```debug
 function gen_hlsa {
-  cat << EOF | java -jar /opt/plantuml.jar -p > hlsa.png
+  cat << 'EOF' | java -jar /opt/plantuml.jar -p > hlsa.png
 @startuml
 actor Customer as c
 rectangle PerfectPizza as pp {
