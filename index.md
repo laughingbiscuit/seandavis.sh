@@ -635,7 +635,7 @@ function euler_6 {
 ```
 Problem 7
 ```
-function euler_6 {
+function euler_7 {
   c=0
   i=2
   target=10001
@@ -648,6 +648,8 @@ function euler_6 {
     i=$((i+1))
   done
 }
+```
+
 # OSRS Leagues 4 Theorycrafting
 
 With [this](https://www.reddit.com/r/2007scape/comments/j7i4te/trailblazer_league_an_extensive_overview_of_every/?rdt=37070) and OSRS wiki.
@@ -723,9 +725,4 @@ Quest order and guide:
 - max, end game PVM and BIS unlocks
 
 # Contact
-
-
-
-
-
 
