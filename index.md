@@ -33,7 +33,7 @@ EOF
 
   apk update
   apk add git tmux curl busybox-extras pandoc gettext openjdk17 graphviz \
-    docker expect asciinema chromium chromium-chromedriver xvfb-run jq weasyprint
+    docker expect asciinema chromium chromium-chromedriver xvfb-run jq weasyprint less
   apk add kubectl --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
   apk add mdp --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing
 
@@ -592,6 +592,44 @@ function euler_4 {
       }
     }
     print highest
+  }'
+}
+```
+
+Problem 5
+
+```
+function euler_5 {
+  exit # skip in pipeline until optimised
+  echo 20 | awk '{
+    for (i = $0; 1; i++) {
+      evenlydivisible = 0
+      for (j = 1; j <= $0; j++) {
+        if(i % j != 0) evenlydivisible = 1
+      }
+      if(evenlydivisible == 0) {
+        print i
+        exit
+      }
+    }
+  }'
+}
+```
+
+Problem 6
+```
+function euler_6 {
+  echo 100 | awk '{
+    sumOfSquares = 0
+    for(i = 1; i <= $0; i++) {
+      sumOfSquares+=i^2
+    }
+    squareOfSum = 0
+    for (i = 1; i <= $0; i++) {
+      squareOfSum+=i
+    }
+    squareOfSum=squareOfSum^2
+    print squareOfSum - sumOfSquares
   }'
 }
 ```
