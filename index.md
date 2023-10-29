@@ -73,6 +73,7 @@ EOF
   - Recommended settings: `echo -e "enable_uart=1\notg_mode=1" >> usercfg.txt`
   - Settings for overclock: `echo -e "over_voltage=6\narm_freq=2000\ngpu_freq=750" >> usercfg.txt`
   - Settings for GUI: `echo -e "disable_overscan=1\ndtoverlay=vc4-kms-v3d\nmax_framebuffers=2\ndtparam=audio=on\ncamera_auto_detect=1\ndisplay_auto_detect=1" >> usercfg.txt`
+  - Settings for running k3d: `echo "cgroup_memory=1 cgroup_enable=memory" >> /boot/cmdline.txt`
   - `cd ~ && umount /mnt && sync`
 - Put SD Card in RPI and boot
 - `setup-alpine` interactively using sys mode
