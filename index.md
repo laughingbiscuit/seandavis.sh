@@ -447,6 +447,8 @@ set -g status-left ""
 EOF
 }
 ```
+<div id="styletmuxcast"></div>
+<script>AsciinemaPlayer.create('/style_tmux.cast', document.getElementById('styletmuxcast'));</script>
 
 ## MDP
 
