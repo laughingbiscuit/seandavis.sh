@@ -47,20 +47,20 @@ EOF
 }
 ```
 
->function install_dev_env_desktop {
->  setup-xorg-base
->  apk update
->  apk add \
->    dwm \
->    setxkbmap
->  echo -e "setxkbmap gb &\nexec dwm" > .xinitrc
->}
+	function install_dev_env_desktop {
+  	  setup-xorg-base
+  	  apk update
+  	  apk add \
+    	  dwm \
+    	  setxkbmap
+  	  echo -e "setxkbmap gb &\nexec dwm" > .xinitrc
+	}
 
 ## Raspberry Pi 4 Setup
 
 - Download aarch64 raspberry pi version on Alpine from [here](https://alpinelinux.org/downloads/)
 
-> curl -sSLO https://dl-cdn.alpinelinux.org/alpine/v3.18/releases/aarch64/alpine-rpi-3.18.4-aarch64.tar.gz
+	curl -sSLO https://dl-cdn.alpinelinux.org/alpine/v3.18/releases/aarch64/alpine-rpi-3.18.4-aarch64.tar.gz
 
 - Insert SD card and get the name with `fdisk -l` (something like `/dev/sda`)
 - In a limited environment, you can use CLI tools but I generally use `gparted` to:
