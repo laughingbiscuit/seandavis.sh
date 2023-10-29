@@ -45,14 +45,39 @@ EOF
   curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | sh
 
 }
-
-function install_dev_env_desktop {
-  apk update
-  apk add \
-    dwm \
-    xterm
-}
 ```
+
+>function install_dev_env_desktop {
+>  setup-xorg-base
+>  apk update
+>  apk add \
+>    dwm \
+>    setxkbmap
+>  echo -e "setxkbmap gb &\nexec dwm" > .xinitrc
+>}
+
+## Raspberry Pi 4 Setup
+
+- Download aarch64 raspberry pi version on Alpine from [here](https://alpinelinux.org/downloads/)
+
+> curl -sSLO https://dl-cdn.alpinelinux.org/alpine/v3.18/releases/aarch64/alpine-rpi-3.18.4-aarch64.tar.gz
+
+- Insert SD card and get the name with `fdisk -l` (something like `/dev/sda`)
+- In a limited environment, you can use CLI tools but I generally use `gparted` to:
+  - Create new ms-dos partition table, wiping the disk
+  - Create single fat32 partition on entire disk
+  - Set boot flag
+- Place alpine setup files
+  - Mount the volume: `mount /dev/sda1 /mnt`
+  - Move alpine over (assuming only one download of alpine): `cd /mnt && cp ~/Downloads/alpine-rpi*.tar.gz && tar -xvzf *tar.gz && rm alpine-rpi*.tar.gz`
+  - Recommended settings: `echo -e "enable_uart=1\notg_mode=1" >> usercfg.txt`
+  - Settings for overclock: `echo -e "over_voltage=6\narm_freq=2000\ngpu_freq=750" >> usercfg.txt`
+  - Settings for GUI: `echo -e "disable_overscan=1\ndtoverlay=vc4-kms-v3d\nmax_framebuffers=2\ndtparam=audio=on\ncamera_auto_detect=1\ndisplay_auto_detect=1" >> usercfg.txt`
+  - `cd ~ && umount /mnt && sync`
+- Put SD Card in RPI and boot
+- `setup-alpine` interactively using sys mode
+- follow steps in `install_dev_env_desktop` 
+
 
 ## PlantUML
 
