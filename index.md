@@ -394,7 +394,6 @@ We can also simulate message queues and other async protocols with `mkfifo`
 
 ```
 function prototype_busybox_mq {
-  rm myqueue
   mkfifo myqueue
   echo "Message 1">myqueue &
   echo "Message 2">myqueue &
