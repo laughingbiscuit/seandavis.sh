@@ -399,6 +399,7 @@ function prototype_busybox_mq {
   echo "Message 2">myqueue &
   sleep 2
   while read line; do echo "$line"; done<myqueue
+  rm mkfifo
 }
 ```
 
