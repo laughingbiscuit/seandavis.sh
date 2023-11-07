@@ -393,12 +393,14 @@ EOF
 We can also simulate message queues and other async protocols with `mkfifo`
 
 ```
-rm myqueue
-mkfifo myqueue
-echo "Message 1">myqueue &
-echo "Message 2">myqueue &
-sleep 2
-while read line; do echo "$line"; done<myqueue
+function prototype_busybox_mq {
+  rm myqueue
+  mkfifo myqueue
+  echo "Message 1">myqueue &
+  echo "Message 2">myqueue &
+  sleep 2
+  while read line; do echo "$line"; done<myqueue
+}
 ```
 
 ## Curl
