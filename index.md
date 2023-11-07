@@ -292,6 +292,20 @@ EOF
 
 ```
 
+I can build a proxy...
+
+```
+function prototype_busybox_proxy {
+  mkdir -p prototype_busybox_proxy
+  (cd prototype_busybox_proxy &&
+    echo 'P:/:httpbin.org/' > httpd.conf &&
+    httpd -p 8081 -c httpd.conf
+    while ! curl -f http://localhost:8081/get; do sleep 1; done)
+  curl http://localhost:8081/get
+  pkill httpd
+}
+```
+
 Lets do the same for a database with an API interface that writes to a CSV file.
 
 ```
