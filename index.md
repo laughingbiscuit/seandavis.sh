@@ -390,6 +390,17 @@ EOF
 
 ```
 
+We can also simulate message queues and other async protocols with `mkfifo`
+
+```
+rm myqueue
+mkfifo myqueue
+echo "Message 1">myqueue &
+echo "Message 2">myqueue &
+sleep 2
+while read line; do echo "$line"; done<myqueue
+```
+
 ## Curl
 
 With the rise of APIs in the global consciousness, the HTTP client space has
