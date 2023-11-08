@@ -47,14 +47,7 @@ EOF
 }
 ```
 
-	function install_dev_env_desktop {
-  	  setup-xorg-base
-  	  apk update
-  	  apk add \
-    	  dwm \
-    	  setxkbmap
-  	  echo -e "setxkbmap gb &\nexec dwm" > .xinitrc
-	}
+`function install_dev_env_desktop { setup-xorg-base; apk update; apk add dwm setxkbmap; echo -e "setxkbmap gb &\nexec dwm" > .xinitrc }`
 
 ## Raspberry Pi 4 Setup
 
