@@ -439,8 +439,8 @@ echo "Hello" | grep -q "Hello"
 echo "Hello" | grep -q "Goodbye"
 
 EOF
-  )
   sh test.sh || true
+  )
 }
 ```
 
@@ -448,7 +448,45 @@ Simple behaviour driven tests can be built using `awk`.
 
 ```
 function prototype_busybox_bdd {
-  echo "TODO"
+  mkdir -p prototype_busybox_bdd
+  (cd prototype_busybox_bdd &&
+    cat << 'EOF' > Test.feature
+Feature: As a mathematician I want to do addition so that I can count
+
+  Scenario: Simple addition
+    Given X is 1
+    And Y is 1
+    When I add X and Y
+    Then result is 2
+EOF
+    cat << 'EOF' > test.sh
+#!/bin/sh
+set -e
+
+cat Test.feature | awk '
+{ isDefined=0; exitCode=0 }
+/Feature|Scenario|^#|^$/ { isDefined=1 }
+/(Given|And) .* is .*/ {
+  isDefined=1
+  vars[$2] = $4
+}
+/When I add .* and .*/ {
+  isDefined=1
+  result = vars[$4] + vars[$6]
+}
+/Then result is .*/ {
+  isDefined=1
+  print "comparing "result" and "$4
+  if(result != $4) {
+    print "Result is not "$4
+    exitCode=1
+  } 
+}
+{ if(!isDefined) { print $0 " is not defined";exitCode = 1 } }
+END { print (exitCode==0)? "Tests Succeeded" : "Tests Failed";exit exitCode }
+'
+EOF
+  sh test.sh)
 }
 ```
 
