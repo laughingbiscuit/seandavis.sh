@@ -404,8 +404,9 @@ EOF
   )
   pkill httpd
 }
-
 ```
+
+TLS can be provided with `stunnel`.
 
 We can also simulate message queues and other async protocols with `mkfifo`
 
