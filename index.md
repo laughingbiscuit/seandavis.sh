@@ -240,7 +240,7 @@ function demo_simple_rec {
 set timeout 5
 set send_human {0.1 0.3 1 0.05 1}
 spawn asciinema rec --cols 60 --rows 15 simple.cast
-expect "~/seandavis.sh/target #"
+expect -timeout 2
 send -h "sh seandavis.sh install_dev_env"; sleep 2
 send "\r"
 expect "~/seandavis.sh/target #"
