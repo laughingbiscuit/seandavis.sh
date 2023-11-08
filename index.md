@@ -491,6 +491,20 @@ EOF
 }
 ```
 
+Sometimes, we need to call external tools from `awk` and capture their output and exit code.
+
+```
+function prototype_busybox_awk_exit {
+  awk 'BEGIN {
+       cmd = "date"
+       res = cmd | getline mydate
+       print mydate
+       print (res!=0)? "Success" : "Fail"
+       close(cmd)
+     }'
+}
+```
+
 ## Curl
 
 With the rise of APIs in the global consciousness, the HTTP client space has
