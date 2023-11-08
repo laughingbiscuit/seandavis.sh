@@ -241,7 +241,7 @@ set timeout 5
 set send_human {0.1 0.3 1 0.05 1}
 spawn asciinema rec --cols 60 --rows 15 simple.cast
 expect "~/seandavis.sh/target #"
-send -h "sh index.sh install_dev_env"; sleep 2
+send -h "sh seandavis.sh install_dev_env"; sleep 2
 send "\r"
 expect "~/seandavis.sh/target #"
 
@@ -671,7 +671,7 @@ set send_human {0.1 0.3 1 0.05 1}
 spawn asciinema rec --cols 60 --rows 15 runrec.cast
 
 expect "~/seandavis.sh/target #"
-send -h "sh index.sh sample_fn"; sleep 2
+send -h "sh seandavis.sh sample_fn"; sleep 2
 send "\r"
 expect -timeout 5
 send -h "exit\r\n"
