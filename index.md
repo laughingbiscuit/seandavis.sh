@@ -146,6 +146,11 @@ while ( loop ) is (x)
   :step three;
 endwhile (y)
 :step four;
+split
+  :step five a;
+split again
+  :step five b;
+end split
 @enduml
 
 EOF
