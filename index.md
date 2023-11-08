@@ -658,6 +658,30 @@ EOF
 
 ![](hlsa.png)
 
+Run a function and output the result
+
+```
+function sample_fn {
+  echo "hello"
+}
+function run_and_record {
+  cat << 'EOF' | expect -f -
+set timeout 5
+set send_human {0.1 0.3 1 0.05 1}
+spawn asciinema rec --cols 60 --rows 15 runrec.cast
+
+expect "~/seandavis.sh/target #"
+send -h "sh index.sh sample_fn"; sleep 2
+send "\r"
+expect -timeout 5
+send -h "exit\r\n"
+EOF
+}
+```
+
+<div id="runrec"></div>
+<script>AsciinemaPlayer.create('/runrec.cast', document.getElementById('runrec'));</script>
+
 # Programming Challenges
 
 ## Project Euler
