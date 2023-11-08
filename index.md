@@ -134,6 +134,18 @@ else (result2)
   :something else;
 endif
 :step two;
+switch (condition)
+case ( A )
+ : a ;
+case ( B )
+ : b ;
+case ( C )
+ : c ;
+endswitch
+while ( loop ) is (x)
+  :step three;
+endwhile (y)
+:step four;
 @enduml
 
 EOF
