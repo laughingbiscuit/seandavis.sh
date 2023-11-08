@@ -448,6 +448,7 @@ Simple behaviour driven tests can be built using `awk`.
 
 ```
 function prototype_busybox_bdd {
+  echo "TODO"
 }
 ```
 
