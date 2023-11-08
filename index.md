@@ -420,6 +420,37 @@ function prototype_busybox_mq {
 }
 ```
 
+Simple tests can be built using busybox `sh`. We set the `-e`
+flag and any non-zero exit code is considered a failure. `grep -q`
+is useful for validating the output.
+
+```
+function prototype_busybox_test {
+  mkdir -p prototype_busybox_test
+  (cd prototype_busybox_test &&
+    cat << 'EOF' > test.sh
+#!/bin/sh
+set -e
+
+# Successful Assertion
+echo "Hello" | grep -q "Hello"
+
+# Failed Assertion
+echo "Hello" | grep -q "Goodbye"
+
+EOF
+  )
+  sh test.sh || true
+}
+```
+
+Simple behaviour driven tests can be built using `awk`.
+
+```
+function prototype_busybox_bdd {
+}
+```
+
 ## Curl
 
 With the rise of APIs in the global consciousness, the HTTP client space has
