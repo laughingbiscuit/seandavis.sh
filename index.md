@@ -802,6 +802,11 @@ function euler_7 {
 
 With [this](https://www.reddit.com/r/2007scape/comments/j7i4te/trailblazer_league_an_extensive_overview_of_every/?rdt=37070) and OSRS wiki.
 
+BIS:
+
+![Screenshot 2023-11-11 235231](https://github.com/laughingbiscuit/seandavis.sh/assets/43555662/d8e04450-1282-402b-9bc2-34750ba0e0a2)
+
+
 - Ironman
 - Chef-only
   - RFD Melee Weapons
