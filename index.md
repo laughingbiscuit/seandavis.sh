@@ -833,10 +833,8 @@ So I will unlock:
 
 - Asgarnia
 - Kandarin
-- Depending on how its going, either...
-  - Fremmy (Vork, DKs)
-  - Desert (KQ, ToA)
-  - Mory (Barrows, ToB)
+- Fremmy (Vork, DKs, lunars)
+
 
 Quest order and guide:
 
