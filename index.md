@@ -12,6 +12,7 @@ This is my notepad.
 | Build | `busybox sh`/`make` | platform-specific (npm, mvn) | Cloud image builds |
 | Test | `busybox sh -e`/`ab` | `cucumber`/platform-specific/`wrk2` | cloud testing tools for multiple platforms and distributed load testing |
 | APIs | `busybox httpd` | kong OSS | Kong Enterprise / Apigee X or Hybrid |
+| Documents | txt + git | wiki | google docs |
 
 
 # Development Environment
