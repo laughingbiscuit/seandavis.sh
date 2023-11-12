@@ -816,6 +816,12 @@ function euler_7 {
 
 With [this](https://www.reddit.com/r/2007scape/comments/j7i4te/trailblazer_league_an_extensive_overview_of_every/?rdt=37070) and OSRS wiki.
 
+BIS:
+
+![Screenshot 2023-11-12 000846](https://github.com/laughingbiscuit/seandavis.sh/assets/43555662/2982c832-c898-4dab-98a2-1560d27fa736)
+
+
+
 - Ironman
 - Chef-only
   - RFD Melee Weapons
@@ -842,10 +848,8 @@ So I will unlock:
 
 - Asgarnia
 - Kandarin
-- Depending on how its going, either...
-  - Fremmy (Vork, DKs)
-  - Desert (KQ, ToA)
-  - Mory (Barrows, ToB)
+- Fremmy (Vork, DKs, lunars)
+
 
 Quest order and guide:
 
