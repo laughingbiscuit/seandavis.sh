@@ -1,5 +1,19 @@
 This is my notepad.
 
+# Technology Choices
+
+> TODO: The tools I will demonstrate in a reference project. Just an example structure for now.
+
+| Tool | Prototyping/Solo | Startup/Small team | Enterprise |
+|------|-----------------------|------------------|------------|
+| Server Hosting | Raspberry Pi | Linode | GCP/AWS |
+| Source Control | Local Git | GitLab OSS | GitHub |
+| Backlog/Project Management | TODO/taskwarrior | GitLab OSS | GitHub |
+| Build | `busybox sh`/`make` | platform-specific (npm, mvn) | Cloud image builds |
+| Test | `busybox sh -e`/`ab` | `cucumber`/platform-specific/`wrk2` | cloud testing tools for multiple platforms and distributed load testing |
+| APIs | `busybox httpd` | kong OSS | Kong Enterprise / Apigee X or Hybrid |
+
+
 # Development Environment
 
 I like to keep things simple. I strive to develop expertise in a small number
