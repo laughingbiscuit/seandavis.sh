@@ -804,7 +804,8 @@ With [this](https://www.reddit.com/r/2007scape/comments/j7i4te/trailblazer_leagu
 
 BIS:
 
-![Screenshot 2023-11-11 235231](https://github.com/laughingbiscuit/seandavis.sh/assets/43555662/d8e04450-1282-402b-9bc2-34750ba0e0a2)
+![Screenshot 2023-11-12 000846](https://github.com/laughingbiscuit/seandavis.sh/assets/43555662/2982c832-c898-4dab-98a2-1560d27fa736)
+
 
 
 - Ironman
