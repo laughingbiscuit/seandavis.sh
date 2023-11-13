@@ -1,5 +1,62 @@
 This is my notepad.
 
+# Sample Project
+
+## Brief
+
+A small pizzeria serves two local villages. Following the Napoli tradition, they have a simple menu:
+
+- Marinara
+- Margherita
+
+This sample project will help them with a digital transformation.
+
+## Design Sprint
+
+[Reference](https://www.gv.com/sprint/).
+
+### Set the Stage - Checklist
+
+```
+- Choose a big challenge:
+- Get a decider:
+- Recruit a sprint team:
+- Schedule extra experts:
+- Pick a facilitator:
+- Block 5 days in the calendar:
+- Book a room with two whiteboards:
+```
+
+### Monday
+
+```
+TODO
+```
+
+### Tuesday
+
+```
+TODO
+```
+
+### Wednesday
+
+```
+TODO
+```
+
+### Thursday
+
+```
+TODO
+```
+
+### Friday
+
+```
+TODO
+```
+
 # Technology Choices
 
 > TODO: The tools I will demonstrate in a reference project. Just an example structure for now.
@@ -265,6 +322,31 @@ EOF
 ```
 <div id="simplecast"></div>
 <script>AsciinemaPlayer.create('/simple.cast', document.getElementById('simplecast'));</script>
+
+Run a function and output the result
+
+```
+function sample_fn {
+  echo "hello"
+}
+function run_and_record {
+  cat << 'EOF' | expect -f -
+set timeout 5
+set send_human {0.1 0.3 1 0.05 1}
+spawn asciinema rec --cols 60 --rows 15 runrec.cast
+
+expect -timeout 2
+send -h "sh seandavis.sh sample_fn"; sleep 2
+send "\r"
+expect -timeout 5
+send -h "exit\r\n"
+EOF
+}
+```
+
+<div id="runrec"></div>
+<script>AsciinemaPlayer.create('/runrec.cast', document.getElementById('runrec'));</script>
+
 
 ## Busybox
 
@@ -624,78 +706,6 @@ function demo_headless_chrome_curl {
 ```
 
 ![](last-screenshot.png)
-
-# Sample Project
-
-## Brief
-
-A small pizzeria serves two local villages. Following the Napoli tradition, they have a simple menu:
-
-- Marinara
-- Margherita
-
-This sample project will help them with a digital transformation.
-
-
-```debug
-function gen_hlsa {
-  cat << 'EOF' | java -jar /opt/plantuml.jar -p > hlsa.png
-@startuml
-actor Customer as c
-rectangle PerfectPizza as pp {
-  rectangle CDN as cdn
-  rectangle ProgressiveWebApp as web
-  rectangle "API GW/Ingress" as api
-  rectangle "Service Mesh/Network" as sm {
-    rectangle "Microsvc 1..* (HTTP/Streaming)" as u {
-      rectangle app as a
-      database db as d
-    }
-    note right of u: uSvcs for business logic, identity providers, payment providers, etc...
-  }
-}
-rectangle "Ops Tooling" as ops {
-  rectangle "Logging"
-  rectangle "Monitoring"
-}
-
-c-d->cdn
-cdn-d->web
-cdn-d->api
-web-d->api
-api-d->sm
-a-d->d
-
-@enduml
-EOF
-}
-```
-
-![](hlsa.png)
-
-Run a function and output the result
-
-```
-function sample_fn {
-  echo "hello"
-}
-function run_and_record {
-  cat << 'EOF' | expect -f -
-set timeout 5
-set send_human {0.1 0.3 1 0.05 1}
-spawn asciinema rec --cols 60 --rows 15 runrec.cast
-
-expect -timeout 2
-send -h "sh seandavis.sh sample_fn"; sleep 2
-send "\r"
-expect -timeout 5
-send -h "exit\r\n"
-EOF
-}
-```
-
-<div id="runrec"></div>
-<script>AsciinemaPlayer.create('/runrec.cast', document.getElementById('runrec'));</script>
 
 # Programming Challenges
 
