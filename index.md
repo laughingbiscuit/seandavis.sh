@@ -17,7 +17,6 @@ This sample project will help them with a digital transformation.
 
 ### Set the Stage - Checklist
 
-```
 - Choose a big challenge:
 - Get a decider:
 - Recruit a sprint team:
@@ -25,36 +24,35 @@ This sample project will help them with a digital transformation.
 - Pick a facilitator:
 - Block 5 days in the calendar:
 - Book a room with two whiteboards:
-```
 
 ### Monday
 
 ```
-TODO
+# TODO
 ```
 
 ### Tuesday
 
 ```
-TODO
+# TODO
 ```
 
 ### Wednesday
 
 ```
-TODO
+# TODO
 ```
 
 ### Thursday
 
 ```
-TODO
+# TODO
 ```
 
 ### Friday
 
 ```
-TODO
+# TODO
 ```
 
 # Technology Choices
