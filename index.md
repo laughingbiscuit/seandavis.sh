@@ -736,12 +736,12 @@ expect -timeout 5 "Enter your sign-in address (example.1password.com):"
 send -h "my.1password.eu"; sleep 2
 send "\r"
 expect -timeout 5 "Enter the email address for your account on my.1password.eu:"
-send -h "$OP_MAIL"; sleep 2
+send -h "xxx"; sleep 2
 send "\r"
-expect -timeout 5 "Enter the Secret Key for $OP_MAIL on my.1password.eu:"
-send -h "$OP_SECRET"; sleep 2
+expect -timeout 5 "Enter the Secret Key for xxx on my.1password.eu:"
+send -h "xxx"; sleep 2
 send "\r"
-expect -timeout 5 "Enter the password for $OP_MAIL on my.1password.eu:"
+expect -timeout 5 "Enter the password for xxx on my.1password.eu:"
 send -h "$OP_PASS"; sleep 2
 send "\r"
 expect -timeout 5 
@@ -758,6 +758,9 @@ send -h "op item create --vault testvault --category login --title 'testitem' 'u
 send "\r'
 expect -timeout 5 
 send -h "op item get testitem"; sleep 2
+send "\r"
+expect -timeout 5 
+send -h "op item get testitem --fields label=password"; sleep 2
 send "\r"
 expect -timeout 5 
 send -h "op vault delete testvault"; sleep 2
