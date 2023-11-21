@@ -751,6 +751,18 @@ expect -timeout 5
 send -h "op vault ls"; sleep 2
 send "\r"
 expect -timeout 5 
+send -h "op vault create testvault"; sleep 2
+send "\r"
+expect -timeout 5 
+send -h "op item create --vault testvault --category login --title 'testitem' 'username=test@example.com' 'password=HelloWorld'; sleep 2
+send "\r'
+expect -timeout 5 
+send -h "op item get testitem"; sleep 2
+send "\r"
+expect -timeout 5 
+send -h "op vault delete testvault"; sleep 2
+send "\r"
+expect -timeout 5 
 
 send -h "exit\r\n"
 EOF
