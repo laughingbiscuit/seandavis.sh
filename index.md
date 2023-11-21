@@ -742,7 +742,7 @@ expect -timeout 5 "Enter the Secret Key for xxx on my.1password.eu:"
 send -h "xxx"; sleep 2
 send "\r"
 expect -timeout 5 "Enter the password for xxx on my.1password.eu:"
-send -h "$OP_PASS"; sleep 2
+send -h "xxx"; sleep 2
 send "\r"
 expect -timeout 5 
 send -h "eval $(op signin)"; sleep 2
