@@ -106,7 +106,7 @@ http://dl-cdn.alpinelinux.org/alpine/v3.18/community
 https://downloads.1password.com/linux/alpinelinux/stable
 EOF
 
-  wget https://downloads.1password.com/linux/keys/alpinelinux/support@1password.com-61ddfc31.rsa.pub -P /etc/apk/keys
+  wget https://downloads.1password.com/linux/keys/alpinelinux/support@1password.com-61ddfc31.rsa.pub -P /etc/apk/keys || echo "1pass key present"
 
   apk update
   apk add git tmux curl busybox-extras pandoc gettext openjdk17 graphviz \
