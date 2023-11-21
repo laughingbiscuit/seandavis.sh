@@ -17,13 +17,17 @@ This sample project will help them with a digital transformation.
 
 ### Set the Stage - Checklist
 
-- Choose a big challenge:
-- Get a decider:
-- Recruit a sprint team:
-- Schedule extra experts:
-- Pick a facilitator:
-- Block 5 days in the calendar:
-- Book a room with two whiteboards:
+- [x] Choose a big challenge
+- [x] Get a decider
+- [x] Recruit a sprint team
+- [x] Schedule extra experts
+- [x] Pick a facilitator
+- [x] Block 5 days in the calendar
+- [x] Book a room with two whiteboards
+
+```
+# TODO use chatgpt cli to generate calendar invitation
+```
 
 ### Monday
 
@@ -99,11 +103,15 @@ function install_dev_env {
   cat << 'EOF' > /etc/apk/repositories
 http://dl-cdn.alpinelinux.org/alpine/v3.18/main
 http://dl-cdn.alpinelinux.org/alpine/v3.18/community
+https://downloads.1password.com/linux/alpinelinux/stable
 EOF
+
+  wget https://downloads.1password.com/linux/keys/alpinelinux/support@1password.com-61ddfc31.rsa.pub -P /etc/apk/keys
 
   apk update
   apk add git tmux curl busybox-extras pandoc gettext openjdk17 graphviz \
-    docker expect asciinema chromium chromium-chromedriver xvfb-run jq weasyprint less
+    docker expect asciinema chromium chromium-chromedriver xvfb-run jq weasyprint less \
+    1password-cli
   apk add kubectl --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
   apk add mdp --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing
 
@@ -704,6 +712,17 @@ function demo_headless_chrome_curl {
 ```
 
 ![](last-screenshot.png)
+
+## 1Password
+
+This demo of course uses a dummy account
+
+```
+function demo_onepassword {
+  op --version
+
+}
+```
 
 # Programming Challenges
 
