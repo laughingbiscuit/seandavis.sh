@@ -720,9 +720,46 @@ This demo of course uses a dummy account
 ```
 function demo_onepassword {
   op --version
+  exit # Only run this locally, as I don't want to store my secrets in GH
+  cat << 'EOF' | expect -f -
+set timeout 5
+set send_human {0.1 0.3 1 0.05 1}
+spawn asciinema rec --cols 60 --rows 15 onepass-demo.cast
+
+expect -timeout 2
+send -h "op vault ls"; sleep 2
+send "\r"
+expect -timeout 5 "Do you want to add an account manually now? [Y/n]"
+send -h "Y"; sleep 2
+send "\r"
+expect -timeout 5 "Enter your sign-in address (example.1password.com):"
+send -h "my.1password.eu"; sleep 2
+send "\r"
+expect -timeout 5 "Enter the email address for your account on my.1password.eu:"
+send -h "$OP_MAIL"; sleep 2
+send "\r"
+expect -timeout 5 "Enter the Secret Key for $OP_MAIL on my.1password.eu:"
+send -h "$OP_SECRET"; sleep 2
+send "\r"
+expect -timeout 5 "Enter the password for $OP_MAIL on my.1password.eu:"
+send -h "$OP_PASS"; sleep 2
+send "\r"
+expect -timeout 5 
+send -h "eval $(op signin)"; sleep 2
+send "\r"
+expect -timeout 5 
+send -h "op vault ls"; sleep 2
+send "\r"
+expect -timeout 5 
+
+send -h "exit\r\n"
+EOF
 
 }
 ```
+
+<div id="opcast"></div>
+<script>AsciinemaPlayer.create('/onepass-demo.cast', document.getElementById('opcast'));</script>
 
 # Programming Challenges
 
