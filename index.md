@@ -50,7 +50,117 @@ This sample project will help them with a digital transformation.
 ### Thursday
 
 ```
-# TODO
+function perfect_pizza_prototype {
+  mkdir perfect_pizza_prototype
+  (cd perfect_pizza_prototype &&
+  cat << 'EOF' > index.html
+<html>
+  <style>
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  </style>
+  <body onload="onLoad()">
+    <h1>Perfect Pizza Prototype</h1>
+    <button onclick="switchRole()">Customer/Staff</button>
+
+    <div id="order" style="display:none">
+      <h2>Order</h2>
+      <form id="frmOrder">
+        <label>Name:</label><br><input type="text" id="frmName"><br>
+        <label>Address:</label><br><input type="text" id="frmAdd"e"><br>
+        <label>Items:</label><br><input type="text" id="frmItems"><br>
+        <button id="btnSubmit" onclick="submitOrder()">Submit</button>
+      </form>
+    </div>
+
+    <div id="manage" style="display:none">
+      <h2>Manage Orders</h2>
+      <table id="tblOrders" style="border: 1px solid black">
+      </table>
+    </div>
+
+<script>
+  if(!localStorage.getItem("curState")) {
+    const defaultState = {
+      role: "customer", // customer or staff
+      orders: [{
+        name: "Adam",
+        address: "Blue Cottage, Main Street",
+        items: "1x margherita",
+        status: "new"
+      }]
+    };
+    localStorage.setItem("curState", JSON.stringify(defaultState));
+  }
+  function submitOrder() {
+    const myName = document.getElementById("frmName").value;
+    const myAdd = document.getElementById("frmAdd").value;
+    const myItems = document.getElementById("frmItems").value;
+    let curState = JSON.parse(localStorage.getItem("curState"));
+    curState.orders.push({
+      name: myName,
+      address: myAdd,
+      items: myItems,
+      status: "new"
+    })
+    localStorage.setItem("curState", JSON.stringify(curState));
+    document.getElementById("frmName").value = "";
+    document.getElementById("frmAdd").value = "";
+    document.getElementById("frmItems").value = "";
+    renderPage();    
+  }
+  function switchRole() {
+    let curState = JSON.parse(localStorage.getItem("curState"));
+    curState.role = ( curState.role == "customer" ? "staff" : "customer" );
+    localStorage.setItem("curState", JSON.stringify(curState));
+    renderPage();    
+  }
+  function switchStatus(name) {
+    let curState = JSON.parse(localStorage.getItem("curState"));
+    alert(JSON.stringify(curState.orders.filter(x => x.name == name)))
+    curState.orders.filter(x => x.name == name)[0].status = "done";
+    localStorage.setItem("curState", JSON.stringify(curState));
+    renderPage();    
+  }
+
+  function renderPage() {
+    let curState = JSON.parse(localStorage.getItem("curState"));
+
+    //show correct page
+    document.getElementById('order').style.display = (curState.role == "customer" ? "initial" : "none");
+    document.getElementById('manage').style.display = (curState.role != "customer" ? "initial" : "none");
+    
+    //render table content
+    document.getElementById('tblOrders').innerHTML='';
+    curState.orders.forEach(order => {
+      const tr = document.getElementById("tblOrders").insertRow();
+      tr.insertCell().appendChild(document.createTextNode(order.name));
+      tr.insertCell().appendChild(document.createTextNode(order.address));
+      tr.insertCell().appendChild(document.createTextNode(order.items));
+      tr.insertCell().appendChild(document.createTextNode(order.status));
+      if(order.status != "done") {
+        const btnDone = document.createElement("button");
+        btnDone.setAttribute("id", "btn" + order.name);
+        btnDone.textContent = "Done";
+        tr.insertCell().appendChild(btnDone);
+        btnDone.addEventListener('click', (e) => {
+          name = e.target.id.replace(/^btn/,"");
+          switchStatus(name);
+        });
+      }
+    })
+  }
+  function onLoad() {
+    renderPage()
+  }
+</script>
+  </body>
+</html>
+EOF
+  )
+}
 ```
 
 ### Friday
