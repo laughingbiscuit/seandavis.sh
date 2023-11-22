@@ -125,7 +125,6 @@ function perfect_pizza_prototype {
   }
   function switchStatus(name) {
     let curState = JSON.parse(localStorage.getItem("curState"));
-    alert(JSON.stringify(curState.orders.filter(x => x.name == name)))
     curState.orders.filter(x => x.name == name)[0].status = "done";
     localStorage.setItem("curState", JSON.stringify(curState));
     renderPage();    
