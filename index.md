@@ -49,6 +49,12 @@ This sample project will help them with a digital transformation.
 
 ### Thursday
 
+A quick and dirty prototype was created. This is built as a single HTML page, with all
+logic happening client side for testing purposes only. Before the idea is validated, we do
+not want to spend any time on creating a production-ready solution.
+
+Try it out [here](/perfect_pizza_prototype).
+
 ```
 function perfect_pizza_prototype {
   mkdir perfect_pizza_prototype
@@ -61,7 +67,7 @@ function perfect_pizza_prototype {
     border-collapse: collapse;
   }
   </style>
-  <body onload="onLoad()">
+  <body onload="renderPage()">
     <h1>Perfect Pizza Prototype</h1>
     <button onclick="switchRole()">Customer/Staff</button>
 
@@ -151,9 +157,6 @@ function perfect_pizza_prototype {
         });
       }
     })
-  }
-  function onLoad() {
-    renderPage()
   }
 </script>
   </body>
