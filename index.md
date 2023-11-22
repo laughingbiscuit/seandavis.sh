@@ -839,49 +839,34 @@ set send_human {0.1 0.3 1 0.05 1}
 spawn asciinema rec --cols 60 --rows 15 onepass-demo.cast
 
 expect -timeout 2
-send -h "op vault ls"; sleep 2
-send "\r"
+send -h "op vault ls"; sleep 2; send "\r"
 expect -timeout 5 "Do you want to add an account manually now? [Y/n]"
-send -h "Y"; sleep 2
-send "\r"
+send -h "Y"; sleep 2; send "\r"
 expect -timeout 5 "Enter your sign-in address (example.1password.com):"
-send -h "my.1password.eu"; sleep 2
-send "\r"
+send -h "my.1password.eu"; sleep 2; send "\r"
 expect -timeout 5 "Enter the email address for your account on my.1password.eu:"
-send -h "xxx"; sleep 2
-send "\r"
+send -h "xxx"; sleep 2; send "\r"
 expect -timeout 5 "Enter the Secret Key for xxx on my.1password.eu:"
-send -h "xxx"; sleep 2
-send "\r"
+send -h "xxx"; sleep 2; send "\r"
 expect -timeout 5 "Enter the password for xxx on my.1password.eu:"
-send -h "xxx"; sleep 2
-send "\r"
+send -h "xxx"; sleep 2; send "\r"
 expect -timeout 5 
-send -h "eval $(op signin)"; sleep 2
-send "\r"
+send -h "eval $(op signin)"; sleep 2; send "\r"
 expect -timeout 5 
-send -h "op vault ls"; sleep 2
-send "\r"
+send -h "op vault ls"; sleep 2; send "\r"
 expect -timeout 5 
-send -h "op vault create testvault"; sleep 2
-send "\r"
+send -h "op vault create testvault"; sleep 2; send "\r"
 expect -timeout 5 
-send -h "op item create --vault testvault --category login --title 'testitem' 'username=test@example.com' 'password=HelloWorld'; sleep 2
-send "\r'
+send -h "op item create --vault testvault --category login --title 'testitem' 'username=test@example.com' 'password=HelloWorld'; sleep 2; send "\r'
 expect -timeout 5 
-send -h "op item get testitem"; sleep 2
-send "\r"
+send -h "op item get testitem"; sleep 2; send "\r"
 expect -timeout 5 
-send -h "op item get testitem --fields label=password"; sleep 2
-send "\r"
+send -h "op item get testitem --fields label=password"; sleep 2; send "\r"
 expect -timeout 5 
-send -h "op vault delete testvault"; sleep 2
-send "\r"
+send -h "op vault delete testvault"; sleep 2; send "\r"
 expect -timeout 5 
-
 send -h "exit\r\n"
 EOF
-
 }
 ```
 
