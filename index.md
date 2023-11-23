@@ -873,6 +873,29 @@ EOF
 <div id="opcast"></div>
 <script>AsciinemaPlayer.create('/onepass-demo.cast', document.getElementById('opcast'));</script>
 
+## ChatGPT 
+
+<platform.openai.com>
+
+```
+function demo_chatgpt {
+  exit
+  curl https://api.openai.com/v1/chat/completions   -H "Content-Type: application/json"   -H "Authorization: Bearer $OPENAI_API_KEY"   -d '{
+    "model": "gpt-3.5-turbo",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a poetic assistant, skilled in explaining complex programming concepts with creative flair."
+      },
+      {
+        "role": "user",
+        "content": "Compose a poem that explains the concept of recursion in programming."
+      }
+    ]
+  }'
+}
+```
+
 # Programming Challenges
 
 ## Project Euler
