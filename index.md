@@ -896,6 +896,26 @@ function demo_chatgpt {
 }
 ```
 
+## Presentation Scripting
+
+I would love to be able to generate presentation videos from my terminal.
+
+This would involve:
+
+- Scripting of demos, as shown with `expect` and `asciinema` above
+- Styling this output and converting to a video format
+- Generation of audio using a TTS model that has been trained with my voice
+- Merging the video and audio at the correct timestamps
+
+```
+function demo_scriptpresent {
+  echo "TODO"
+  # generate script for demo
+  # generate audio with my voice - piper tts is an option
+  # merge
+}
+```
+
 # Programming Challenges
 
 ## Project Euler
