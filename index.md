@@ -909,6 +909,7 @@ This would involve:
 
 ```
 function demo_scriptpresent {
+  export PS1="$ "
   cat << 'EOF' | expect -f -
 set timeout 5
 set send_human {0.1 0.3 1 0.05 1}
