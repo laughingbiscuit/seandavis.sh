@@ -915,7 +915,7 @@ set send_human {0.1 0.3 1 0.05 1}
 spawn asciinema rec --cols 60 --rows 15 scriptpresent-demo.cast
 
 expect -timeout 2
-send -h "clear && cat > /dev/null"; sleep 2; send "\r"
+send -h "cat > /dev/null"; sleep 2; send "\r"
 send -h "Hello World"; sleep 2; send "\r"
 send -h -- "-----------"; sleep 2; send "\r\r"
 expect -timeout 5
