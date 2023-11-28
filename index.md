@@ -915,8 +915,8 @@ set timeout 5
 set send_human {0.1 0.3 1 0.05 1}
 spawn asciinema rec --cols 60 --rows 15 scriptpresent-demo.cast
 
-expect -timeout 1
-send "vi whiteboard\r"; sleep 2; send "i"
+expect "~/seandavis.sh/target #" -timeout 1
+send " vi whiteboard\r"; sleep 2; send "i"
 expect -timeout 2
 send -h -- "# Hello World\n\n"; sleep 2
 send -h -- "- Hello\n"; sleep 2
