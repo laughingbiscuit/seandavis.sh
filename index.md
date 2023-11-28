@@ -909,12 +909,41 @@ This would involve:
 
 ```
 function demo_scriptpresent {
+  mkdir -p scriptpresent
+  (cd scriptpresent &&
+  cat << 'EOF' > hello.mdp
+# Hello World
+
+Hello
+
+---
+
+World
+EOF
+  cat << 'EOF' | expect -f -
+set timeout 5
+set send_human {0.1 0.3 1 0.05 1}
+spawn asciinema rec --cols 60 --rows 15 scriptpresent-demo.cast
+
+expect -timeout 2
+send -h "mdp hello.mdp"; sleep 2; send "\r"
+expect -timeout 5
+send "\r"
+expect -timeout 5
+send "\r"
+expect -timeout 2
+send -h "exit\r"
+EOF
   echo "TODO"
   # generate script for demo
   # generate audio with my voice - piper tts is an option
   # merge
+  )
 }
 ```
+<div id="scriptpresentcast"></div>
+<script>AsciinemaPlayer.create('/scriptpresent-demo.cast', document.getElementById('scriptpresentcast'));</script>
+
 
 # Programming Challenges
 
