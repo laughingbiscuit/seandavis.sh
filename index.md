@@ -920,8 +920,8 @@ expect -timeout 2
 send -h "cat"; sleep 2; send "\r"
 send -h "HELLO WORLD"; sleep 2; send "\r\r"
 expect -timeout 5
-send -h "- Hello"; sleep 2; send "\r"
-send -h "- World"; sleep 2; send "\r"
+send -h "\- Hello"; sleep 2; send "\r"
+send -h "\- World"; sleep 2; send "\r"
 expect -timeout 5
 send \x03
 expect -timeout 2
