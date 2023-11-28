@@ -909,7 +909,7 @@ This would involve:
 
 ```
 function demo_scriptpresent {
-  cat << 'EOF' | expect -f -
+  cat << 'EOF' > /dev/null | expect -f -
 set timeout 5
 set send_human {0.1 0.3 1 0.05 1}
 spawn asciinema rec --cols 60 --rows 15 scriptpresent-demo.cast
