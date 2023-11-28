@@ -918,10 +918,11 @@ spawn asciinema rec --cols 60 --rows 15 scriptpresent-demo.cast
 
 expect -timeout 2
 send -h "cat"; sleep 2; send "\r"
-send -h "HELLO WORLD"; sleep 2; send "\r\r"
+send -h "Hello World"; sleep 2; send "\r"
+send -h -- "-----------"; sleep 2; send "\r\r"
 expect -timeout 5
-send -h "\- Hello"; sleep 2; send "\r"
-send -h "\- World"; sleep 2; send "\r"
+send -h -- "- Hello"; sleep 2; send "\r"
+send -h -- "- World"; sleep 2; send "\r"
 expect -timeout 5
 send \x03
 expect -timeout 2
