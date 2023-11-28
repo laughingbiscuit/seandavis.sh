@@ -909,8 +909,6 @@ This would involve:
 
 ```
 function demo_scriptpresent {
-  mkdir -p scriptpresent
-  (cd scriptpresent &&
   cat << 'EOF' | expect -f -
 set timeout 5
 set send_human {0.1 0.3 1 0.05 1}
@@ -932,7 +930,6 @@ EOF
   # generate script for demo
   # generate audio with my voice - piper tts is an option
   # merge
-  )
 }
 ```
 <div id="scriptpresentcast"></div>
