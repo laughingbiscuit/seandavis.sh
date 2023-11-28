@@ -914,13 +914,13 @@ set timeout 5
 set send_human {0.1 0.3 1 0.05 1}
 spawn asciinema rec --cols 60 --rows 15 scriptpresent-demo.cast
 
-send "vi\r"; sleep 2; send "i"
+send "vi whiteboard\r"; sleep 2; send "i"
 expect -timeout 2
-send -h -- "# Hello World\n"; sleep 2
+send -h -- "# Hello World\n\n"; sleep 2
 send -h -- "- Hello\n"; sleep 2
 send -h -- "- World"; sleep 2
 send "\003"
-send ":wq\r"
+send ":q!\r"
 send "exit\r"
 EOF
   echo "TODO"
