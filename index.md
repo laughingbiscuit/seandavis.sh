@@ -909,13 +909,13 @@ This would involve:
 
 ```
 function demo_scriptpresent {
-  cat << 'EOF' > /dev/null | expect -f -
+  cat << 'EOF' | expect -f -
 set timeout 5
 set send_human {0.1 0.3 1 0.05 1}
 spawn asciinema rec --cols 60 --rows 15 scriptpresent-demo.cast
 
 expect -timeout 2
-send -h "cat"; sleep 2; send "\r"
+send -h "clear && cat > /dev/null"; sleep 2; send "\r"
 send -h "Hello World"; sleep 2; send "\r"
 send -h -- "-----------"; sleep 2; send "\r\r"
 expect -timeout 5
@@ -928,6 +928,7 @@ send -h "exit\r"
 EOF
   echo "TODO"
   # generate script for demo
+  # convert demo to gif - agg
   # generate audio with my voice - piper tts is an option
   # merge
 }
