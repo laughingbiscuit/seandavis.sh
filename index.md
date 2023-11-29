@@ -223,7 +223,7 @@ EOF
   apk update
   apk add git tmux curl busybox-extras pandoc gettext openjdk17 graphviz \
     docker expect asciinema chromium chromium-chromedriver xvfb-run jq weasyprint less \
-    1password-cli github-cli
+    1password-cli github-cli tree
   apk add kubectl --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
   apk add mdp --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing
 
@@ -926,6 +926,9 @@ send ":q!\r"
 send "exit\r"
 EOF
   gh --version
+  mkdir -p testagg
+  gh release download --pattern 'agg-x86_64-unknown-linux-musl' -R asciinema/agg -D testagg
+  tree testagg
   echo "TODO"
   # generate script for demo
   # convert demo to gif - agg
