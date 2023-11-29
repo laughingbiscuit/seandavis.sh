@@ -927,7 +927,8 @@ send "exit\r"
 EOF
   gh --version
   mkdir -p testagg
-  gh release download --pattern 'agg-x86_64-unknown-linux-musl' -R asciinema/agg -D testagg
+  # https://github.com/cli/cli/discussions/3820
+  gh release download --pattern 'agg-x86_64-unknown-linux-musl' -R https://github.com/asciinema/agg -D testagg
   tree testagg
   echo "TODO"
   # generate script for demo
