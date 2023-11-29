@@ -927,7 +927,7 @@ send "exit\r"
 EOF
   # https://github.com/cli/cli/discussions/3820
   cargo install --root /usr/local --git https://github.com/asciinema/agg
-  agg scriptpresent-demo.cast scriptpresent-demo.gif
+  agg --font-size 20  scriptpresent-demo.cast scriptpresent-demo.gif
   echo "TODO"
   # generate script for demo
   # convert demo to gif - agg
