@@ -223,7 +223,7 @@ EOF
   apk update
   apk add git tmux curl busybox-extras pandoc gettext openjdk17 graphviz \
     docker expect asciinema chromium chromium-chromedriver xvfb-run jq weasyprint less \
-    1password-cli github-cli tree
+    1password-cli github-cli tree cargo rust
   apk add kubectl --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
   apk add mdp --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing
 
@@ -925,11 +925,8 @@ send "\003"
 send ":q!\r"
 send "exit\r"
 EOF
-  gh --version
-  mkdir -p testagg
   # https://github.com/cli/cli/discussions/3820
-  gh release download --pattern 'agg-x86_64-unknown-linux-musl' -R https://github.com/asciinema/agg -D testagg
-  tree testagg
+  cargo install --git https://github.com/asciinema/agg
   echo "TODO"
   # generate script for demo
   # convert demo to gif - agg
