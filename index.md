@@ -926,7 +926,8 @@ send ":q!\r"
 send "exit\r"
 EOF
   # https://github.com/cli/cli/discussions/3820
-  cargo install --git https://github.com/asciinema/agg
+  cargo install --root /usr/local/bin --git https://github.com/asciinema/agg
+  agg scriptpresent-demo.cast scriptpresent-demo.gif
   echo "TODO"
   # generate script for demo
   # convert demo to gif - agg
@@ -936,7 +937,7 @@ EOF
 ```
 <div id="scriptpresentcast"></div>
 <script>AsciinemaPlayer.create('/scriptpresent-demo.cast', document.getElementById('scriptpresentcast'));</script>
-
+<img src="scriptpresent-demo.gif">
 
 # Programming Challenges
 
