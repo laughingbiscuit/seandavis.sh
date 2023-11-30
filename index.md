@@ -223,7 +223,7 @@ EOF
   apk update
   apk add git tmux curl busybox-extras pandoc gettext openjdk17 graphviz \
     docker expect asciinema chromium chromium-chromedriver xvfb-run jq weasyprint less \
-    1password-cli github-cli tree cargo rust font-dejavu
+    1password-cli github-cli tree cargo rust font-dejavu py3-pip
   apk add kubectl --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
   apk add mdp --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing
 
@@ -928,6 +928,10 @@ EOF
   # https://github.com/cli/cli/discussions/3820
   cargo install --root /usr/local --git https://github.com/asciinema/agg
   agg --font-size 20  scriptpresent-demo.cast scriptpresent-demo.gif
+  pip install piper-tts
+  echo 'Welcome to the world of speech synthesis!' | piper \
+  --model en_US-lessac-medium \
+  --output_file welcome.wav
   echo "TODO"
   # generate script for demo
   # convert demo to gif - agg
@@ -938,6 +942,7 @@ EOF
 <div id="scriptpresentcast"></div>
 <script>AsciinemaPlayer.create('/scriptpresent-demo.cast', document.getElementById('scriptpresentcast'));</script>
 <img src="scriptpresent-demo.gif">
+<a href="welcome.wav">WAV</a>
 
 # Programming Challenges
 
