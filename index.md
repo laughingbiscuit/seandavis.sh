@@ -928,8 +928,14 @@ EOF
   # https://github.com/cli/cli/discussions/3820
   cargo install --root /usr/local --git https://github.com/asciinema/agg
   agg --font-size 20  scriptpresent-demo.cast scriptpresent-demo.gif
-  pip install piper-phonemize
-  pip install piper-tts
+  
+  git clone https://github.com/rhasspy/piper-phonemize
+  (cd piper-phonemize && docker buildx build . -t piper-phonemize --output 'type=local,dest=dist')
+  tree dist
+
+  exit
+
+
   echo 'Welcome to the world of speech synthesis!' | ./piper/piper \
   --model en_US-lessac-medium \
   --output_file welcome.wav
