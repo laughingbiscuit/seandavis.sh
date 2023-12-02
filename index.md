@@ -909,6 +909,8 @@ This would involve:
 
 ```
 function demo_scriptpresent {
+  echo "TODO"
+  exit
   export PS1="$ "
   cat << 'EOF' | expect -f -
 set timeout 5
@@ -931,15 +933,15 @@ EOF
   
   git clone https://github.com/rhasspy/piper-phonemize
   (cd piper-phonemize && docker buildx build . -t piper-phonemize --output 'type=local,dest=dist')
+  git clone https://github.com/rhasspy/piper
+  cp piper-phonemize/lib/
   tree dist
 
-  exit
 
 
   echo 'Welcome to the world of speech synthesis!' | ./piper/piper \
   --model en_US-lessac-medium \
   --output_file welcome.wav
-  echo "TODO"
   ffmpeg -loop 1 -i scriptpresent-demo.gif -i welcome.wav -longest out.mp4
   # generate script for demo
   # convert demo to gif - agg
@@ -1066,6 +1068,80 @@ function euler_7 {
     if [ $c = $target ]; then echo $i; exit; fi
     i=$((i+1))
   done
+}
+```
+
+## AOC 2023
+
+Day 1 Pt 1
+
+```
+function aoc23day1pt1 {
+  cat << 'EOF' | awk '{
+  gsub(/\D/,"")
+  fst=substr($0,0,1)
+  lst=substr($0,length($0),1)
+  sum+=((fst*10)+lst)
+}
+END { print sum }'
+two1nine
+eightwothree
+abcone2threexyz
+xtwone3four
+4nineeightseven2
+zoneight234
+7pqrstsixteen
+EOF
+}
+
+function aoc23day1pt2 {
+  cat << 'EOF' | awk '{
+    # forward search
+    for(i=1; i <= length($0); i++) {
+      fPart = substr($0, 1, i)
+      where = match(fPart, /\d|one|two|three|four|five|six|seven|eight|nine/)
+      if(where > 0) {
+        sub(/one/, "1", fPart)
+        sub(/two/, "2", fPart)
+        sub(/three/, "3", fPart)
+        sub(/four/, "4", fPart)
+        sub(/five/, "5", fPart)
+        sub(/six/, "6", fPart)
+        sub(/seven/, "7", fPart)
+        sub(/eight/, "8", fPart)
+        sub(/nine/, "9", fPart)
+        gsub(/\D/,"",fPart)
+        break
+      }
+    }
+    # backwards search
+    for(i=1; i <= length($0); i++) {
+      bPart = substr($0, length($0)-i+1, i)
+      where = match(bPart, /\d|one|two|three|four|five|six|seven|eight|nine/)
+      if(where > 0) {
+        sub(/one/, "1", bPart)
+        sub(/two/, "2", bPart)
+        sub(/three/, "3", bPart)
+        sub(/four/, "4", bPart)
+        sub(/five/, "5", bPart)
+        sub(/six/, "6", bPart)
+        sub(/seven/, "7", bPart)
+        sub(/eight/, "8", bPart)
+        sub(/nine/, "9", bPart)
+        gsub(/\D/,"",bPart)
+        break
+      }
+    }
+    sum+=((fPart*10) + bPart)
+  } END {print sum}'
+two1nine
+eightwothree
+abcone2threexyz
+xtwone3four
+4nineeightseven2
+zoneight234
+7pqrstsixteen
+EOF
 }
 ```
 
