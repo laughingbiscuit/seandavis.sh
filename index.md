@@ -909,8 +909,6 @@ This would involve:
 
 ```
 function demo_scriptpresent {
-  echo "TODO"
-  exit
   export PS1="$ "
   cat << 'EOF' | expect -f -
 set timeout 5
@@ -931,18 +929,17 @@ EOF
   cargo install --root /usr/local --git https://github.com/asciinema/agg
   agg --font-size 20  scriptpresent-demo.cast scriptpresent-demo.gif
   
-  git clone https://github.com/rhasspy/piper-phonemize
-  (cd piper-phonemize && docker buildx build . -t piper-phonemize --output 'type=local,dest=dist')
-  git clone https://github.com/rhasspy/piper
-  cp piper-phonemize/lib/
-  tree dist
-
-
-
+  apk add gcompat libc6compat
+  curl -sSLO https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/lessac/medium/en_US-lessac-medium.onnx
+  curl -sSLO https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/lessac/medium/en_US-lessac-medium.onnx.json
+  curl -sSLO https://github.com/rhasspy/piper/releases/download/v1.2.0/piper_amd64.tar.gz
+  tar -xvzf piper_amd64.tar.gz
   echo 'Welcome to the world of speech synthesis!' | ./piper/piper \
   --model en_US-lessac-medium \
   --output_file welcome.wav
   ffmpeg -loop 1 -i scriptpresent-demo.gif -i welcome.wav -longest out.mp4
+  echo "TODO"
+  exit
   # generate script for demo
   # convert demo to gif - agg
   # generate audio with my voice - piper tts is an option
