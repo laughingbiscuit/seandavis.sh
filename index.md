@@ -929,7 +929,7 @@ EOF
   cargo install --root /usr/local --git https://github.com/asciinema/agg
   agg --font-size 20  scriptpresent-demo.cast scriptpresent-demo.gif
   
-  apk add gcompat libc6compat
+  apk add gcompat libc6-compat
   curl -sSLO https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/lessac/medium/en_US-lessac-medium.onnx
   curl -sSLO https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/lessac/medium/en_US-lessac-medium.onnx.json
   curl -sSLO https://github.com/rhasspy/piper/releases/download/v1.2.0/piper_amd64.tar.gz

@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+cat << 'EOF' | awk '
+{
+  poss=1
+  gsub(/:|;|,/,"")
+  partsLen = split($0, parts, " ")
+  for(i = 3; i < partsLen; i=i+2) {
+    if(parts[i] > limit[parts[i+1]]) { poss = 0 }
+  }
+  if(poss > 0) sum+=$2
+}
+END { print sum }'
+EOF
