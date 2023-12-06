@@ -935,7 +935,8 @@ EOF
   (cd piper &&
     curl -sSLO https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/lessac/medium/en_US-lessac-medium.onnx
     curl -sSLO https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/lessac/medium/en_US-lessac-medium.onnx.json
-
+    file en_US-lessac-medium.onnx
+    file en_US-lessac-medium.onnx.json
   echo 'Welcome to the world of speech synthesis!' | ./piper \
   --model en_US-lessac-medium \
   --output_file welcome.wav
