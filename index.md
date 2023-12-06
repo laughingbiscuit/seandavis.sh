@@ -223,7 +223,7 @@ EOF
   apk update
   apk add git tmux curl busybox-extras pandoc gettext openjdk17 graphviz \
     docker expect asciinema chromium chromium-chromedriver xvfb-run jq weasyprint less \
-    1password-cli github-cli tree cargo rust font-dejavu py3-pip
+    1password-cli github-cli tree cargo rust font-dejavu py3-pip ffmpeg
   apk add kubectl --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
   apk add mdp --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing
 
