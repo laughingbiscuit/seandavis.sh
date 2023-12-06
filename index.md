@@ -942,7 +942,7 @@ EOF
   --output_file welcome.wav
   )
   
-  ffmpeg -loop 1 -i scriptpresent-demo.gif -i ./piper/welcome.wav -longest out.mp4
+  ffmpeg -loop 1 -i scriptpresent-demo.gif -i ./piper/welcome.wav out.mp4
   echo "TODO"
   exit
   # generate script for demo
