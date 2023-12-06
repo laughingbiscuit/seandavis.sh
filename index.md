@@ -930,14 +930,18 @@ EOF
   agg --font-size 20  scriptpresent-demo.cast scriptpresent-demo.gif
   
   apk add gcompat libc6-compat
-  curl -sSLO https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/lessac/medium/en_US-lessac-medium.onnx
-  curl -sSLO https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/lessac/medium/en_US-lessac-medium.onnx.json
   curl -sSLO https://github.com/rhasspy/piper/releases/download/v1.2.0/piper_amd64.tar.gz
   tar -xvzf piper_amd64.tar.gz
+  (cd piper &&
+    curl -sSLO https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/lessac/medium/en_US-lessac-medium.onnx
+    curl -sSLO https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/lessac/medium/en_US-lessac-medium.onnx.json
+
   echo 'Welcome to the world of speech synthesis!' | ./piper/piper \
   --model en_US-lessac-medium \
   --output_file welcome.wav
-  ffmpeg -loop 1 -i scriptpresent-demo.gif -i welcome.wav -longest out.mp4
+  )
+  
+  ffmpeg -loop 1 -i scriptpresent-demo.gif -i ./piper/welcome.wav -longest out.mp4
   echo "TODO"
   exit
   # generate script for demo
@@ -1142,7 +1146,7 @@ EOF
 }
 ```
 
-## Day 2
+Day 2
 
 ```
 function aoc23day2pt1 {
@@ -1168,6 +1172,7 @@ Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red
 Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green
 EOF
 }
+
 function aoc23day2pt2 {
   cat << 'EOF' | awk '
 {
@@ -1194,7 +1199,23 @@ EOF
 
 }
 ```
+Day 3
 
+```
+function aoc23day3pt1 {
+  cat << 'EOF' | awk '
+# start on row 3
+#
+# on (curRow - 1) - match for numbers and store start and end locs
+#   for each number, check for symbols 
+#   delete array entry if no symbols
+# next row 
+#
+# sum of all parts number in array
+'
+EOF
+}
+```
 # OSRS Leagues 4 Theorycrafting
 
 With [this](https://www.reddit.com/r/2007scape/comments/j7i4te/trailblazer_league_an_extensive_overview_of_every/?rdt=37070) and OSRS wiki.
