@@ -938,7 +938,7 @@ EOF
     file en_US-lessac-medium.onnx
     file en_US-lessac-medium.onnx.json
   echo 'Welcome to the world of speech synthesis!' | ./piper \
-  --model en_US-lessac-medium \
+  --model en_US-lessac-medium.onnx \
   --output_file welcome.wav
   )
   
