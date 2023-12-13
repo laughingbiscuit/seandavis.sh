@@ -26,19 +26,61 @@ This sample project will help them with a digital transformation.
 - [x] Book a room with two whiteboards
 
 ```
-# TODO use chatgpt cli to generate calendar invitation
+function generate_sprintzero_invitation {
+  exit
+  curl https://api.openai.com/v1/chat/completions   -H "Content-Type: application/json"   -H "Authorization: Bearer $OPENAI_API_KEY"   -d '{
+    "model": "gpt-3.5-turbo",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a an assistant working in a silicon valley technology company. You use elements of humour whilst staying quite formal."
+      },
+      {
+        "role": "user",
+        "content": "Generate the text for a calendar invitation for 5 days of workshops. The workshops will follow the Google Ventures Design Sprint approach. The challenge is to build a digital experience for a pizza company called Perfect Pizza. Please also generate a list of attendees by role."
+      }
+    ]
+  }'
+}
 ```
 
 ### Monday
 
 ```
-# TODO
-```
+# Start at the end
+# Newspaper headline: Perfect Pizza serves the community throughout COVID
+
+# Map the challenge
+# - Define the customer experience 
+# - Transform existing cooking and delivery processes
+# - Request customer feedback to maintain a personalised experience
+
+# Ask the experts
+# - Interview the owner
+# - Interview the chef
+# - Interview the delivery driver
+
+# Choose a target
+# - We won't significantly change the tills or kitchen
+# - We will only deploy a website for customers and drivers
+# - We will connect a single new screen in the kitchen
+``` 
 
 ### Tuesday
 
 ```
-# TODO
+# Remix and improve
+# - Add fastfood style kiosks at the entrance
+# - Set up deliveries to vaccination centres
+# - Convert the existing menu to a website
+
+# Sketch
+# <omitted>
+
+# Recruit
+# - Found 5 friendly customers to test our prototype
+
+
 ```
 
 ### Wednesday
