@@ -1259,7 +1259,7 @@ function aoc23day3pt1 {
 NR > 2 {
   isPartValid = 0
   partNumSoFar = ""
-  for(i = 1; i < length(curRow); i++) {
+  for(i = 1; i <= length(curRow); i++) {
     curChar = substr(curRow, i, 1)
     curRowIndex = NR -1
     curColIndex = i
@@ -1269,12 +1269,12 @@ NR > 2 {
     isNextNum = match(substr(curRow, i+1, 1), /\d/) > 0
     isNorthSymbol = (match(substr(rowBefore, i, 1), /\d/) == 0) && (match(substr(rowBefore, i, 1), /\./) == 0)
     isSouthSymbol = (match(substr(rowAfter, i, 1), /\d/) == 0) && (match(substr(rowAfter, i, 1), /\./) == 0)
-    isEastSymbol = (match(substr(curRow, i+1, 1), /\d/) == 0) && (match(substr(curRow, i+1, 1), /\./) == 0)
-    isWestSymbol = (match(substr(curRow, i-1, 1), /\d/) == 0) && (match(substr(curRow, i-1, 1), /\./) == 0)
-    isNorthEastSymbol = (match(substr(rowBefore, i+1, 1), /\d/) == 0) && (match(substr(rowBefore, i+1, 1), /\./) == 0)
-    isNorthWestSymbol = (match(substr(rowBefore, i-1, 1), /\d/) == 0) && (match(substr(rowBefore, i-1, 1), /\./) == 0)
-    isSouthEastSymbol = (match(substr(rowAfter, i+1, 1), /\d/) == 0) && (match(substr(rowAfter, i+1, 1), /\./) == 0)
-    isSouthWestSymbol = (match(substr(rowAfter, i-1, 1), /\d/) == 0) && (match(substr(rowAfter, i-1, 1), /\./) == 0)
+    isEastSymbol = (match(substr(curRow, i+1, 1), /\d/) == 0) && (match(substr(curRow, i+1, 1), /\./) == 0) && (i+1 <= length(curRow))
+    isWestSymbol = (match(substr(curRow, i-1, 1), /\d/) == 0) && (match(substr(curRow, i-1, 1), /\./) == 0) && (i-1 > 0)
+    isNorthEastSymbol = (match(substr(rowBefore, i+1, 1), /\d/) == 0) && (match(substr(rowBefore, i+1, 1), /\./) == 0) && (i+1 <= length(curRow))
+    isNorthWestSymbol = (match(substr(rowBefore, i-1, 1), /\d/) == 0) && (match(substr(rowBefore, i-1, 1), /\./) == 0) && (i-1 > 0)
+    isSouthEastSymbol = (match(substr(rowAfter, i+1, 1), /\d/) == 0) && (match(substr(rowAfter, i+1, 1), /\./) == 0) && (i+1 <= length(curRow))
+    isSouthWestSymbol = (match(substr(rowAfter, i-1, 1), /\d/) == 0) && (match(substr(rowAfter, i-1, 1), /\./) == 0) && (i-1 > 0)
 
     if(isCurNum == 1 && (isNorthSymbol || isSouthSymbol || isEastSymbol || isWestSymbol || isNorthEastSymbol || isNorthWestSymbol || isSouthEastSymbol || isSouthWestSymbol)) {
       isPartValid = 1
