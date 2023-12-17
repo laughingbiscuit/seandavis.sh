@@ -1245,20 +1245,108 @@ EOF
 Day 3
 
 ```
+###
+# NOTE: ive prepended and appended a dotted line to the input
+###
 function aoc23day3pt1 {
   cat << 'EOF' | awk '
-# start on row 3
-#
-# on (curRow - 1) - match for numbers and store start and end locs
-#   for each number, check for symbols 
-#   delete array entry if no symbols
-# next row 
-#
-# sum of all parts number in array
-'
+# start on row 3 and look back.. easier than looking forward
+{ 
+  rowBefore=curRow
+  curRow=rowAfter
+  rowAfter=$0
+}
+NR > 2 {
+  isPartValid = 0
+  partNumSoFar = ""
+  for(i = 1; i < length(curRow); i++) {
+    curChar = substr(curRow, i, 1)
+    curRowIndex = NR -1
+    curColIndex = i
+    #print "Cursor is on row:" curRowIndex " col: " curColIndex " char: " curChar
+    isPrevNum = match(substr(curRow, i-1, 1), /\d/) > 0
+    isCurNum = match(substr(curRow, i, 1), /\d/) > 0
+    isNextNum = match(substr(curRow, i+1, 1), /\d/) > 0
+    isNorthSymbol = (match(substr(rowBefore, i, 1), /\d/) == 0) && (match(substr(rowBefore, i, 1), /\./) == 0)
+    isSouthSymbol = (match(substr(rowAfter, i, 1), /\d/) == 0) && (match(substr(rowAfter, i, 1), /\./) == 0)
+    isEastSymbol = (match(substr(curRow, i+1, 1), /\d/) == 0) && (match(substr(curRow, i+1, 1), /\./) == 0)
+    isWestSymbol = (match(substr(curRow, i-1, 1), /\d/) == 0) && (match(substr(curRow, i-1, 1), /\./) == 0)
+    isNorthEastSymbol = (match(substr(rowBefore, i+1, 1), /\d/) == 0) && (match(substr(rowBefore, i+1, 1), /\./) == 0)
+    isNorthWestSymbol = (match(substr(rowBefore, i-1, 1), /\d/) == 0) && (match(substr(rowBefore, i-1, 1), /\./) == 0)
+    isSouthEastSymbol = (match(substr(rowAfter, i+1, 1), /\d/) == 0) && (match(substr(rowAfter, i+1, 1), /\./) == 0)
+    isSouthWestSymbol = (match(substr(rowAfter, i-1, 1), /\d/) == 0) && (match(substr(rowAfter, i-1, 1), /\./) == 0)
+
+    if(isCurNum == 1 && (isNorthSymbol || isSouthSymbol || isEastSymbol || isWestSymbol || isNorthEastSymbol || isNorthWestSymbol || isSouthEastSymbol || isSouthWestSymbol)) {
+      isPartValid = 1
+    }
+    if(isCurNum == 1) {
+      partNumSoFar = partNumSoFar""curChar
+    }
+    if(isNextNum == 0 && isPartValid == 1) {
+      validParts[curRowIndex","curColIndex] = partNumSoFar
+    }
+    if(isNextNum == 0) {
+      isPartValid = 0
+      partNumSoFar = ""
+    }
+
+  }
+}
+END {
+  for(part in validParts) {
+    sum+=validParts[part]
+  }
+  print sum
+}'
+..........
+467..114..
+...*......
+..35..633.
+......#...
+617*......
+.....+.58.
+..592.....
+......755.
+...$.*....
+.664.598..
+..........
 EOF
 }
 ```
+
+Day 4
+
+```
+function aoc4 {
+  cat << 'EOF' | awk '{
+  matches=0
+  split($0, res, " ")
+
+  for (i = 9 ; i <=16; i++) {
+    for (j = 3; j <= 7; j++) {
+      if(res[i] == res[j]) {
+        matches+=1
+        break
+      }
+    }
+  }
+  if(matches > 0) {
+    print matches
+    sum+= 2 ^ (matches -1)
+  }
+}
+END { print sum }
+'
+Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53
+Card 2: 13 32 20 16 61 | 61 30 68 82 17 32 24 19
+Card 3:  1 21 53 59 44 | 69 82 63 72 16 21 14  1
+Card 4: 41 92 73 84 69 | 59 84 76 51 58  5 54 83
+Card 5: 87 83 26 28 32 | 88 30 70 12 93 22 82 36
+Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11
+EOF
+}
+```
+
 # OSRS Leagues 4 Theorycrafting
 
 With [this](https://www.reddit.com/r/2007scape/comments/j7i4te/trailblazer_league_an_extensive_overview_of_every/?rdt=37070) and OSRS wiki.
