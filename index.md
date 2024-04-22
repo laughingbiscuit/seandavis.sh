@@ -264,7 +264,7 @@ EOF
 
   apk update
   apk add git tmux curl busybox-extras pandoc gettext openjdk17 graphviz \
-    docker expect asciinema chromium chromium-chromedriver xvfb-run jq weasyprint less \
+/   docker expect asciinema chromium chromium-chromedriver xvfb-run jq weasyprint less \
     1password-cli github-cli tree cargo rust font-dejavu py3-pip ffmpeg
   apk add kubectl --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
   apk add mdp --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing
@@ -967,6 +967,7 @@ send "\003"
 send ":q!\r"
 send "exit\r"
 EOF
+exit
   # https://github.com/cli/cli/discussions/3820
   cargo install --root /usr/local --git https://github.com/asciinema/agg
   agg --font-size 20  scriptpresent-demo.cast scriptpresent-demo.gif
